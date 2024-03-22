@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-/* Create product */
+/* Create product - Admin */
 router.post("/", isAuth, isAdmin, async (req, res) => {
   try {
     await productsService.createProduct(req.body);
@@ -44,8 +44,28 @@ router.get("/:id", async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(404).json({ status: "fail", data: { message: "Product not found!" } });
+    res
+      .status(404)
+      .json({ status: "fail", data: { message: "Product not found!" } });
   }
 });
+
+/* Update product - Admin */
+router.put("/:id", isAuth, isAdmin, async (req, res) => {
+  try {
+    await productsService.updateProduct(req.params.id, req.body);
+
+    res.status(201).json({
+      status: "success",
+      data: { message: "Product succesfully updated!" },
+    });
+  } catch (err) {
+    res
+      .status(400)
+      .json({ status: "fail", data: { message: getErrorMessage(err) } });
+  }
+});
+
+/* Delete product - Admin */
 
 module.exports = router;
