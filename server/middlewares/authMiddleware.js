@@ -13,8 +13,6 @@ const authMiddleware = async (req, res, next) => {
 
     req.user = decoded;
 
-    res.locals.isAuthenticated = true;
-
     next();
   } catch (err) {
     next();
@@ -30,6 +28,10 @@ const isAuth = (req, res, next) => {
 
   next();
 };
+
+const isAdmin = (req, res, next) => {
+  console.log(req.user);
+}
 
 module.exports = {
   authMiddleware,
