@@ -4,12 +4,18 @@ const express = require('express');
 const expressConfig = require("./config/expressConfig");
 
 // Router import
-const router = require("./")
+const router = require("./routes");
 
 const app = express();
 
 // Config middlewares
 expressConfig(app);
+
+// Auth middleware
+
+
+// App router middleware
+app.use(router);
 
 const PORT = 3000;
 
