@@ -4,6 +4,18 @@ const { getErrorMessage } = require("./../utils/errorUtil");
 
 const router = require("express").Router();
 
+router.param("id", async (req, res, next) => {
+  try {
+    const product = await productsService.getProduct(req.params.id);
+
+    next();
+  } catch (err) {
+    res
+      .status(404)
+      .json({ status: "fail", data: { message: "Product not found!" } });
+  }
+});
+
 /* Get all products */
 router.get("/", async (req, res) => {
   const products = await productsService.getProducts();
@@ -34,20 +46,14 @@ router.post("/", isAuth, isAdmin, async (req, res) => {
 
 /* Get One Product */
 router.get("/:id", async (req, res) => {
-  try {
-    const product = await productsService.getProduct(req.params.id);
+  const product = await productsService.getProduct(req.params.id);
 
-    res.status(200).json({
-      status: "success",
-      data: {
-        product,
-      },
-    });
-  } catch (err) {
-    res
-      .status(404)
-      .json({ status: "fail", data: { message: "Product not found!" } });
-  }
+  res.status(200).json({
+    status: "success",
+    data: {
+      product,
+    },
+  });
 });
 
 /* Update product - Admin */
@@ -67,5 +73,9 @@ router.put("/:id", isAuth, isAdmin, async (req, res) => {
 });
 
 /* Delete product - Admin */
+router.delete("/:id", async (req, res) => {
+  try {
+  } catch (err) {}
+});
 
 module.exports = router;
