@@ -3,6 +3,9 @@ const express = require('express');
 // Config imports
 const expressConfig = require("./config/expressConfig");
 
+// Router import
+const router = require("./")
+
 const app = express();
 
 // Config middlewares
