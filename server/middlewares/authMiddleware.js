@@ -1,5 +1,6 @@
 const jwt = require("./../lib/jwt");
 const SECRET = require("./../config/secret");
+const { checkIfAdmin } = require("../services/authService");
 
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies["auth"];
@@ -29,11 +30,18 @@ const isAuth = (req, res, next) => {
   next();
 };
 
-const isAdmin = (req, res, next) => {
-  console.log(req.user);
+const isAdmin = async (req, res, next) => {
+  if(!await checkIfAdmin(req.user._id)) {
+    return res
+      .status(401)
+      .json({ status: "fail", data: { message: "You are unauthorized for this action!" } });
+  }
+
+  next();
 }
 
 module.exports = {
   authMiddleware,
   isAuth,
+  isAdmin,
 };

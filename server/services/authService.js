@@ -7,7 +7,7 @@ const SECRET = require("./../config/secret");
 const generateToken = async (createdUser) => {
     const payload = {
         _id: createdUser._id,
-        username: createdUser.username
+        username: createdUser.username,
     }
 
     const token = await jwt.sign(payload, SECRET);
@@ -46,7 +46,14 @@ const loginUser = async (data) => {
     return token;
 }
 
+const checkIfAdmin = async (id) => {
+    const user = await userModel.findById(id);
+
+    return user.isAdmin;
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    checkIfAdmin
 }
