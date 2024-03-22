@@ -75,7 +75,19 @@ router.put("/:id", isAuth, isAdmin, async (req, res) => {
 /* Delete product - Admin */
 router.delete("/:id", async (req, res) => {
   try {
-  } catch (err) {}
+    await productsService.deleteProduct(req.params.id);
+
+    res
+      .status(204)
+      .json({
+        status: "success",
+        data: { message: "Successfully deleted product!" },
+      });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "error", data: { message: getErrorMessage(err) } });
+  }
 });
 
 module.exports = router;
