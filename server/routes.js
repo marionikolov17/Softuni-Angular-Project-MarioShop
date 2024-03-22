@@ -11,4 +11,8 @@ router.use("/products", productsController);
 router.use("/orders", ordersController);
 router.use("/cart", cartController);
 
+router.get("*", (req, res) => {
+  res.status(404).json({ status: "fail", data: { message: "Not Found!" } });
+});
+
 module.exports = router;
