@@ -8,9 +8,16 @@ const { getErrorMessage } = require("./../utils/errorUtil");
 
 router.post("/register", async (req, res) => {
   try {
+    console.log(req.body)
     const token = await authService.registerUser(req.body);
 
     res.cookie("auth", token);
+    res.status(201).json({
+        status: "success",
+        data: {
+            token
+        }
+    });
   } catch (err) {
     res.status(400).json({
       status: "fail",
