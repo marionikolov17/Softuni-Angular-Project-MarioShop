@@ -6,7 +6,7 @@ const getProduct = async (id) => productsModel.findById(id);
 
 const createProduct = async (data) => productsModel.create(data);
 
-const updateProduct = async (id, data) => productsModel.findByIdAndUpdate(id, data);
+const updateProduct = async (id, data) => productsModel.findByIdAndUpdate(id, data, { runValidators: true });
 
 const deleteProduct = async (id) => productsModel.findByIdAndDelete(id);
 
