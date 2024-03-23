@@ -17,22 +17,34 @@ router.param("id", async (req, res, next) => {
   }
 });
 
-/* Get cart */
-router.get("/:id", isAuth, async (req, res) => {
+/* isOwner - middleware */
+const isOwner = async (req, res, next) => {
   try {
     const cart = await cartService.getCart(req.params.id);
 
     /* Check if cart is to current user */
     if (cart.userId != req.user._id) {
-        res.status(401).json({ status: "fail", data: { message: "You are unauthorized to view this cart!" } });
+      res.status(401).json({
+        status: "fail",
+        data: { message: "You are unauthorized to view this cart!" },
+      });
     }
 
-    res.status(200).json({ status: "success", data: { cart } });
+    req.cart = cart;
+    next();
   } catch (err) {
     res
       .status(500)
       .json({ status: "error", data: { message: getErrorMessage(err) } });
   }
+};
+
+/* Get cart */
+router.get("/:id", isAuth, isOwner, async (req, res) => {
+  res.status(200).json({ status: "success", data: { cart: req.cart } });
 });
+
+/* Update cart */
+router.put("/:id", isAuth, async (req, res) => {});
 
 module.exports = router;
