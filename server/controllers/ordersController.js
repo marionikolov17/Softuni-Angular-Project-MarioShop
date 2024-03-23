@@ -31,9 +31,9 @@ router.get("/", async (req, res) => {
 });
 
 /* Create an order */
-router.post("/", async (req, res) => {
+router.post("/", isAuth, async (req, res) => {
   try {
-    await ordersService.createOrder(req.body);
+    await ordersService.createOrder({...req.body, userId: req.user._id});
 
     res
       .status(201)
