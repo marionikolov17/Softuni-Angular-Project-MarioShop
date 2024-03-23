@@ -30,6 +30,24 @@ router.get("/", async (req, res) => {
   }
 });
 
+/* Create an order */
+router.post("/", async (req, res) => {
+  try {
+    await ordersService.createOrder(req.body);
+
+    res
+      .status(201)
+      .json({
+        status: "success",
+        data: { message: "Order created successfully!" },
+      });
+  } catch (err) {
+    res
+      .status(400)
+      .json({ status: "fail", data: { message: getErrorMessage(err) } });
+  }
+});
+
 /* Get an order */
 router.get("/:id", async (req, res) => {
   try {
