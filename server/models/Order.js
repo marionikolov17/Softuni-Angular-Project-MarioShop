@@ -28,6 +28,10 @@ const orderSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    isDone: {
+        type: Boolean,
+        default: false
     }
 });
 
