@@ -24,7 +24,7 @@ const isOwner = async (req, res, next) => {
 
     /* Check if cart is to current user */
     if (cart.userId != req.user._id) {
-      res.status(401).json({
+      return res.status(401).json({
         status: "fail",
         data: { message: "You are unauthorized to view this cart!" },
       });
