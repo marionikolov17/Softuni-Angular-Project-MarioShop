@@ -19,9 +19,28 @@ router.param("id", async (req, res, next) => {
 
 /* Get all orders */
 router.get("/", async (req, res) => {
-  const orders = await ordersService.getOrders();
+  try {
+    const orders = await ordersService.getOrders();
 
-  res.status(200).json({ status: "success", data: { orders } });
+    res.status(200).json({ status: "success", data: { orders } });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "error", data: { message: getErrorMessage(err) } });
+  }
+});
+
+/* Get an order */
+router.get("/:id", async (req, res) => {
+  try {
+    const order = await ordersService.getOrder(req.params.id);
+
+    res.status(200).json({ status: "success", data: { order } });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "error", data: { message: getErrorMessage(err) } });
+  }
 });
 
 module.exports = router;
