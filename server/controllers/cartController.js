@@ -17,4 +17,17 @@ router.param("id", async (req, res, next) => {
   }
 });
 
+/* Get cart */
+router.get("/:id", isAuth, async (req, res) => {
+  try {
+    const cart = await cartService.getCart(req.params.id);
+
+    res.status(200).json({ status: "success", data: { cart } });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ status: "error", data: { message: getErrorMessage(err) } });
+  }
+});
+
 module.exports = router;
