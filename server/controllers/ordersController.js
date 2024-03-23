@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const ordersService = require("./../services/ordersService");
 
-const { isAuth } = require("../middlewares/authMiddleware");
+const { isAuth, isAdmin } = require("../middlewares/authMiddleware");
 const { getErrorMessage } = require("./../utils/errorUtil");
 
 router.param("id", async (req, res, next) => {
@@ -61,8 +61,8 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-/* Done an order */
-router.patch("/:id/done", async (req, res) => {
+/* Done an order - Admin */
+router.patch("/:id/done", isAuth, isAdmin, async (req, res) => {
     try {
         await ordersService.doneOrder(req.params.id);
     
