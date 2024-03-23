@@ -2,7 +2,7 @@ const router = require("express").Router();
 
 const cartService = require("./../services/cartService");
 
-const { isAuth, isAdmin } = require("../middlewares/authMiddleware");
+const { isAuth } = require("../middlewares/authMiddleware");
 const { getErrorMessage } = require("./../utils/errorUtil");
 
 router.param("id", async (req, res, next) => {
