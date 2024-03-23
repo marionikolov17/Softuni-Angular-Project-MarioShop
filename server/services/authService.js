@@ -25,7 +25,7 @@ const registerUser = async (data) => {
 
     const token = await generateToken(createdUser);
 
-    return token;
+    return {token, createdUser};
 }
 
 const loginUser = async (data) => {

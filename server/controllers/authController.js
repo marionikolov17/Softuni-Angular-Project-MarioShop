@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const authService = require("./../services/authService");
+const cartService = require("./../services/cartService");
 
 const { isAuth } = require("./../middlewares/authMiddleware");
 
@@ -8,8 +9,11 @@ const { getErrorMessage } = require("./../utils/errorUtil");
 
 router.post("/register", async (req, res) => {
   try {
-    console.log(req.body)
-    const token = await authService.registerUser(req.body);
+    //console.log(req.body)
+    const {token, createdUser} = await authService.registerUser(req.body);
+
+    /* Create empty cart for user */
+    await cartService.createCart({ userId: createdUser._id, products: [] });
 
     res.cookie("auth", token);
     res.status(201).json({
