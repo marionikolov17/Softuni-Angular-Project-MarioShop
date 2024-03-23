@@ -22,6 +22,11 @@ router.get("/:id", isAuth, async (req, res) => {
   try {
     const cart = await cartService.getCart(req.params.id);
 
+    /* Check if cart is to current user */
+    if (cart.userId != req.user._id) {
+        res.status(401).json({ status: "fail", data: { message: "You are unauthorized to view this cart!" } });
+    }
+
     res.status(200).json({ status: "success", data: { cart } });
   } catch (err) {
     res
