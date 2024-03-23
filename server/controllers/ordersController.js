@@ -61,4 +61,17 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+/* Done an order */
+router.patch("/:id/done", async (req, res) => {
+    try {
+        await ordersService.doneOrder(req.params.id);
+    
+        res.status(200).json({ status: "success", data: { message: "Order is done successfully!" } });
+      } catch (err) {
+        res
+          .status(500)
+          .json({ status: "error", data: { message: getErrorMessage(err) } });
+      }
+});
+
 module.exports = router;
