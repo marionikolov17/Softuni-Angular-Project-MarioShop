@@ -17,7 +17,8 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     ShopRoutingModule,
     RouterModule,
-    CoreModule
+    CoreModule,
+
   ],
   exports: [
     ShopComponent
