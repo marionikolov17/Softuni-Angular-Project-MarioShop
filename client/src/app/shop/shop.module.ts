@@ -5,6 +5,7 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
 import { HomeComponent } from './home/home.component';
 import { CoreModule } from '../core/core.module';
+import { ProductComponent } from './product/product.component';
 
 
 
@@ -12,6 +13,7 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     ShopComponent,
     HomeComponent,
+    ProductComponent,
   ],
   imports: [
     CommonModule,
