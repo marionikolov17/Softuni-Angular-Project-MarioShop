@@ -22,7 +22,6 @@ import { CartComponent } from './cart/cart.component';
     ShopRoutingModule,
     RouterModule,
     CoreModule,
-
   ],
   exports: [
     ShopComponent
