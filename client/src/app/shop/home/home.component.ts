@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  isCategoryOpened: boolean = false;
 
+  toggle() {
+    this.isCategoryOpened = !this.isCategoryOpened
+  }
 }

@@ -10,11 +10,12 @@
         class="btn btn-outline-primary dropdown-toggle"
         data-bs-toggle="collapse"
         data-bs-target="#categoryCollapse"
+        (click)="toggle()"
       >
         Category
       </button>
       <!-- Category Options -->
-      <div class="collapse mt-3" id="categoryCollapse">
+      <div class="mt-3" id="categoryCollapse" *ngIf="isCategoryOpened">
         <button class="btn btn-outline-secondary d-block mb-2">
           Computers
         </button>
