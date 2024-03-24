@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font: "Montserrat", sans-serif;
+  --black: #000;
+  --white: #fff;
+  --secondary-white: #fcfafa;
+  --main-blue: #64c4ed;
+  --secondary-blue: #4f81c7;
+}
+
+.product-container {
+    height: 800px;
+    font-family: var(--font) !important;
+}
+
+.product-image-wrapper {
+    height: 350px;
+    width: 500px !important;
+}
+
+.product-details-wrapper {
+    height: 350px;
+    width: 450px !important;
+}
