@@ -4,7 +4,7 @@ import { ShopComponent } from './shop.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: "shop", children: [
+  { path: "shop", component: ShopComponent, children: [
     { path: "", pathMatch: "full", component: HomeComponent }
   ] }
 ];

@@ -4,18 +4,23 @@ import { RouterModule } from '@angular/router';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
 import { HomeComponent } from './home/home.component';
+import { CoreModule } from '../core/core.module';
 
 
 
 @NgModule({
   declarations: [
     ShopComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
     ShopRoutingModule,
-    RouterModule
+    RouterModule,
+    CoreModule
+  ],
+  exports: [
+    ShopComponent
   ]
 })
 export class ShopModule { }
