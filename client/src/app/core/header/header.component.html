@@ -1,1 +1,55 @@
-<p>header works!</p>
+<!-- Navigation -->
+<header class="d-flex w-100 overflow-hidden align-items-center">
+  <nav class="navbar navbar-expand-lg w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-3 fw-bold" href="#">Mario's Shop</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <!-- Logged in user -->
+          <li class="nav-item d-none align-items-center ms-3">
+            <!-- d-flex -->
+            <p class="mb-0 fw-bold">Hello, <a href="">MarioNikolov17</a></p>
+          </li>
+          <!-- Guest user -->
+          <li class="nav-item ms-3 d-flex align-items-center">
+            <button class="btn btn-light">Login</button>
+          </li>
+        </ul>
+        <a href="" class="d-flex align-items-center text-decoration-none">
+          <i class="fas fa-shopping-cart position-relative mx-4 fs-5">
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-text"
+              >0</span
+            >
+          </i>
+        </a>
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
