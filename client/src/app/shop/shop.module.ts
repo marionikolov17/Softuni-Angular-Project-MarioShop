@@ -6,6 +6,7 @@ import { ShopComponent } from './shop.component';
 import { HomeComponent } from './home/home.component';
 import { CoreModule } from '../core/core.module';
 import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -14,6 +15,7 @@ import { ProductComponent } from './product/product.component';
     ShopComponent,
     HomeComponent,
     ProductComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
