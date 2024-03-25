@@ -15,6 +15,10 @@ export class LoginComponent {
   constructor(private fb: FormBuilder) {}
 
   login(): void {
-    
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    /* Login logic here */
   }
 }
