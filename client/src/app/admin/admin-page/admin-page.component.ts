@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faHome, faCartPlus, faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-page',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-page.component.css']
 })
 export class AdminPageComponent {
-
+  /* Icons - FontAwesome */
+  faHome = faHome;
+  faCartPlus = faCartPlus;
+  faPlus = faPlus;
+  faSignOutAlt = faSignOutAlt;
 }
