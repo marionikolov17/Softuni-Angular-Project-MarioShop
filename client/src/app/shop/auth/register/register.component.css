@@ -1,0 +1,31 @@
+:root {
+  --font: "Montserrat", sans-serif;
+  --black: #000;
+  --white: #fff;
+  --secondary-white: #fcfafa;
+  --main-blue: #64c4ed;
+  --secondary-blue: #4f81c7;
+}
+
+.register-section {
+  height: 800px;
+}
+
+.register-form {
+  height: 570px;
+  width: 450px;
+  font-family: var(--font) !important;
+}
+
+.invalid-input-message {
+  font-size: 14px;
+}
+
+.register-form button {
+  width: 150px !important;
+}
+
+.low-form-text {
+  text-align: center;
+  font-size: 13px;
+}
