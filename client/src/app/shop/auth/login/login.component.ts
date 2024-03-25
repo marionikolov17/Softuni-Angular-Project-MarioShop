@@ -13,4 +13,8 @@ export class LoginComponent {
   })
 
   constructor(private fb: FormBuilder) {}
+
+  login(): void {
+    
+  }
 }

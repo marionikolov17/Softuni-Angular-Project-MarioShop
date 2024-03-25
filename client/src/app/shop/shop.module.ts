@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { CoreModule } from '../core/core.module';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
 
 
 
@@ -22,6 +24,7 @@ import { CartComponent } from './cart/cart.component';
     ShopRoutingModule,
     RouterModule,
     CoreModule,
+    AuthModule
   ],
   exports: [
     ShopComponent
