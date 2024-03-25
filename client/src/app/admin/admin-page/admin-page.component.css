@@ -26,6 +26,11 @@
   justify-content: center;
   align-items: center;
   border: 1px solid var(--black);
+  transition: .3s ease;
+}
+
+.admin-sidenav button:hover {
+  border: none !important;
 }
 
 .admin-sidenav button div {
