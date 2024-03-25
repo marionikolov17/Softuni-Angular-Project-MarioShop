@@ -1,0 +1,31 @@
+:root {
+  --font: "Montserrat", sans-serif;
+  --black: #000;
+  --white: #fff;
+  --secondary-white: #fcfafa;
+  --main-blue: #64c4ed;
+  --secondary-blue: #4f81c7;
+}
+
+.login-section {
+  height: 800px;
+}
+
+.login-form {
+  height: 370px;
+  width: 450px;
+  font-family: var(--font) !important;
+}
+
+.invalid-input-message {
+  font-size: 14px;
+}
+
+.login-form button {
+  width: 150px !important;
+}
+
+.low-form-text {
+  text-align: center;
+  font-size: 13px;
+}
