@@ -281,5 +281,70 @@
         <button class="btn btn-outline-primary fs-5 mt-5">Create</button>
       </form>
     </section>
+
+    <!-- Admin edit product page -->
+    <section class="admin-create-product-page w-100 d-block" *ngIf="isEditPageShown">
+      <h3 class="m-5 display-6 fw-bold">Edit product</h3>
+
+      <!-- Product form -->
+      <form class="m-3 p-3">
+        <div class="mb-4">
+          <label for="name" class="form-label fs-5">Product name</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            id="name"
+            name="name"
+            placeholder="Enter your product name..."
+          />
+          <p class="invalid-input-message text-danger">
+            Product name is invalid!
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="form-label fs-5"
+            >Product description</label
+          >
+          <textarea
+            name="description"
+            class="form-control"
+            placeholder="Enter product description..."
+          ></textarea>
+          <p class="invalid-input-message text-danger">
+            Product description is invalid!
+          </p>
+        </div>
+
+        <div class="mb-4">
+          <label for="imageSrc" class="form-label fs-5">Product image</label>
+          <input
+            class="form-control form-control-lg"
+            type="file"
+            id="imageSrc"
+          />
+          <p class="invalid-input-message text-danger">Invalid file!</p>
+        </div>
+
+        <div class="mb-4">
+          <label for="" class="form-label fs-5">Product price</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <span class="input-group-text">0.00</span>
+            <input
+              type="number"
+              class="form-control form-control-lg"
+              placeholder="Enter product price..."
+              aria-label="Dollar amount (with dot and two decimal places)"
+            />
+          </div>
+          <p class="invalid-input-message text-danger">
+            Product price is invalid!
+          </p>
+        </div>
+
+        <button class="btn btn-outline-primary fs-5 mt-5">Edit</button>
+      </form>
+    </section>
   </div>
 </main>

@@ -14,26 +14,30 @@ export class AdminPageComponent {
   faSignOutAlt = faSignOutAlt;
 
   /* Pages toggles */
-  isProductsPageShown: boolean = true;
+  isProductsPageShown: boolean = false;
   isOrdersPageShown: boolean = false;
   isCreatePageShown: boolean = false;
+  isEditPageShown: boolean = true;
 
   /* Pages toggles functions */
   showProductsPage() {
     this.isProductsPageShown = true;
     this.isOrdersPageShown = false;
     this.isCreatePageShown = false;
+    this.isEditPageShown = false;
   }
 
   showOrdersPage() {
     this.isProductsPageShown = false;
     this.isOrdersPageShown = true;
     this.isCreatePageShown = false;
+    this.isEditPageShown = false;
   }
 
   showCreatePage() {
     this.isProductsPageShown = false;
     this.isOrdersPageShown = false;
     this.isCreatePageShown = true;
+    this.isEditPageShown = false;
   }
 }
