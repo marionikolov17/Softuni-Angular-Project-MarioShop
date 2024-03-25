@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-login.component.css']
 })
 export class AdminLoginComponent {
+  adminLoginForm = this.fb.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]]
+  })
 
+  constructor(private fb: FormBuilder) {}
+
+  login() {
+    if (this.adminLoginForm.invalid) {
+      return
+    }
+
+    // Login logic here
+  }
 }
