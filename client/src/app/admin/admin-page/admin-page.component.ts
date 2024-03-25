@@ -12,4 +12,28 @@ export class AdminPageComponent {
   faCartPlus = faCartPlus;
   faPlus = faPlus;
   faSignOutAlt = faSignOutAlt;
+
+  /* Pages toggles */
+  isProductsPageShown: boolean = true;
+  isOrdersPageShown: boolean = false;
+  isCreatePageShown: boolean = false;
+
+  /* Pages toggles functions */
+  showProductsPage() {
+    this.isProductsPageShown = true;
+    this.isOrdersPageShown = false;
+    this.isCreatePageShown = false;
+  }
+
+  showOrdersPage() {
+    this.isProductsPageShown = true;
+    this.isOrdersPageShown = false;
+    this.isCreatePageShown = false;
+  }
+
+  showCreatePage() {
+    this.isProductsPageShown = true;
+    this.isOrdersPageShown = false;
+    this.isCreatePageShown = false;
+  }
 }
