@@ -17,4 +17,12 @@ export class RegisterComponent {
   });
 
   constructor(private fb: FormBuilder) {}
+
+  register() {
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    // Register logic here
+  }
 }
