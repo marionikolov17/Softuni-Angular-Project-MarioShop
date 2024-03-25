@@ -14,10 +14,10 @@ export class AdminPageComponent {
   faSignOutAlt = faSignOutAlt;
 
   /* Pages toggles */
-  isProductsPageShown: boolean = false;
+  isProductsPageShown: boolean = true;
   isOrdersPageShown: boolean = false;
   isCreatePageShown: boolean = false;
-  isEditPageShown: boolean = true;
+  isEditPageShown: boolean = false;
 
   /* Pages toggles functions */
   showProductsPage() {
