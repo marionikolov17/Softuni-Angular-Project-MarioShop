@@ -26,14 +26,14 @@ export class AdminPageComponent {
   }
 
   showOrdersPage() {
-    this.isProductsPageShown = true;
-    this.isOrdersPageShown = false;
+    this.isProductsPageShown = false;
+    this.isOrdersPageShown = true;
     this.isCreatePageShown = false;
   }
 
   showCreatePage() {
-    this.isProductsPageShown = true;
+    this.isProductsPageShown = false;
     this.isOrdersPageShown = false;
-    this.isCreatePageShown = false;
+    this.isCreatePageShown = true;
   }
 }

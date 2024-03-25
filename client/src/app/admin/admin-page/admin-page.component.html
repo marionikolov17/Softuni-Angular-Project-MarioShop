@@ -9,7 +9,7 @@
       </li>
       <!-- Admin nav button -->
       <li class="d-flex justify-content-center">
-        <button class="btn">
+        <button class="btn" (click)="showProductsPage()">
           <div class="d-flex justify-content-start align-items-center">
             <fa-icon [icon]="faHome"></fa-icon>
             <p class="my-auto px-1">Products</p>
@@ -18,7 +18,7 @@
       </li>
       <!-- Admin nav button -->
       <li class="d-flex justify-content-center">
-        <button class="btn">
+        <button class="btn" (click)="showOrdersPage()">
           <div class="d-flex justify-content-start align-items-center">
             <fa-icon [icon]="faCartPlus"></fa-icon>
             <p class="my-auto px-1">Orders</p>
@@ -27,7 +27,7 @@
       </li>
       <!-- Admin nav button -->
       <li class="d-flex justify-content-center">
-        <button class="btn">
+        <button class="btn" (click)="showCreatePage()">
           <div class="d-flex justify-content-start align-items-center">
             <fa-icon [icon]="faPlus"></fa-icon>
             <p class="my-auto px-1">Create</p>
@@ -58,7 +58,7 @@
   <!-- Admin content -->
   <div class="admin-content col-9 overflow-hidden">
     <!-- Admin products page -->
-    <section class="admin-products-page w-100 d-none">
+    <section class="admin-products-page w-100 d-block" *ngIf="isProductsPageShown">
       <!-- d-block -->
       <h3 class="m-5 display-6 fw-bold">Total products - 2</h3>
 
@@ -150,7 +150,7 @@
     </section>
 
     <!-- Admin orders page -->
-    <section class="admin-orders-page w-100 d-none">
+    <section class="admin-orders-page w-100 d-block" *ngIf="isOrdersPageShown">
       <h3 class="m-5 display-6 fw-bold">Total orders - 2</h3>
 
       <!-- List of all orders -->
@@ -218,7 +218,7 @@
     </section>
 
     <!-- Admin create product page -->
-    <section class="admin-create-product-page w-100 d-block">
+    <section class="admin-create-product-page w-100 d-block" *ngIf="isCreatePageShown">
       <h3 class="m-5 display-6 fw-bold">Create new product</h3>
 
       <!-- Product form -->
