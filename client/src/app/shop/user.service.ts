@@ -16,7 +16,9 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  register() {}
+  register(username: string, email: string, password: string, rePassword: string) {
+    return this.httpClient.post('/api/auth/register', { username, email, password, rePassword });
+  }
 
   login(email: string, password: string) {
     return this.httpClient.post('/api/auth/login', { email, password }).pipe(

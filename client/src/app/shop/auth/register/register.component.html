@@ -67,6 +67,7 @@
         <ng-container *ngIf="passwords?.get('rePassword')?.touched">
           <p class="invalid-input-message text-danger" *ngIf="passwords?.errors?.['matchPasswordsValidator']">Passwords do not match!</p>
         </ng-container>
+        <p class="invalid-input-message text-danger" *ngIf="isRegisterError">{{registerErrMsg}}</p>
       </div>
     </ng-container>
     <div class="d-flex justify-content-center">
