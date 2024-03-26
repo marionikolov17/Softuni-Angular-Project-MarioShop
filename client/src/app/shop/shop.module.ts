@@ -9,8 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +21,10 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     CommonModule,
     ShopRoutingModule,
+    HttpClientModule,
     RouterModule,
     CoreModule,
-    AuthModule
+    AuthModule,
   ],
   exports: [
     ShopComponent
