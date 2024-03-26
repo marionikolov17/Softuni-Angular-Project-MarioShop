@@ -6,5 +6,6 @@ export interface Product {
   category: string;
   price: number;
   createdAt: string;
+  isActive: boolean;
   __v: number
 }
