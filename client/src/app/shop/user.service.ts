@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { User } from '../types/user';
-import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -20,9 +19,9 @@ export class UserService {
   register() {}
 
   login(email: string, password: string) {
-    return this.httpClient
-      .post('/api/auth/login', { email, password })
-      .pipe(tap((response) => console.log(response)));
+    return this.httpClient.post('/api/auth/login', { email, password }).pipe(
+      tap((response) => console.log(response)),
+    );
   }
 
   logout() {}
