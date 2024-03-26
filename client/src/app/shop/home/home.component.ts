@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ShopService } from '../shop.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   isCategoryOpened: boolean = false;
+
+  constructor(private shopService: ShopService) {}
+
+  ngOnInit(): void {
+      this.shopService.getProducts().subscribe((data) => {
+        console.log(data);
+      })
+  }
 
   toggle() {
     this.isCategoryOpened = !this.isCategoryOpened
