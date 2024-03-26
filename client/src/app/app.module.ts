@@ -8,6 +8,7 @@ import { ShopModule } from './shop/shop.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminModule } from './admin/admin.module';
 import { ShopService } from './shop/shop.service';
+import { appInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ShopService } from './shop/shop.service';
     NgbModule,
     AdminModule
   ],
-  providers: [ShopService],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
