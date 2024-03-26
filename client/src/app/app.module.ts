@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminModule } from './admin/admin.module';
+import { ShopService } from './shop/shop.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AdminModule } from './admin/admin.module';
     NgbModule,
     AdminModule
   ],
-  providers: [],
+  providers: [ShopService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
