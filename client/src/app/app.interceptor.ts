@@ -26,10 +26,10 @@ class AppInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(
-      catchError((err) => {
+      /* catchError((err) => {
         this.errorService.setError(err);
         return [err]
-      })
+      }) */
     )
   }
 }

@@ -6,15 +6,21 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   loginForm = this.fb.group({
     email: ['', [Validators.required]],
-    password: ['', [Validators.required]]
-  })
+    password: ['', [Validators.required]],
+  });
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
+  isLoginError: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   login(): void {
     if (this.loginForm.invalid) {
@@ -22,8 +28,19 @@ export class LoginComponent {
     }
 
     /* Login logic here */
-    this.userService.login(this.loginForm.value.email || "", this.loginForm.value.password || "").subscribe(() => {
-      this.router.navigate(['/shop']);
-    });
+    this.userService
+      .login(
+        this.loginForm.value.email || '',
+        this.loginForm.value.password || ''
+      )
+      .subscribe({
+        next: () => {
+          this.isLoginError = false;
+          this.router.navigate(['/shop']);
+        },
+        error: () => {
+          this.isLoginError = true;
+        }
+      });
   }
 }
