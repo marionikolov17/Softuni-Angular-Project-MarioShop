@@ -11,4 +11,8 @@ export class ShopService {
   getProducts() {
     return this.httpClient.get("/api/products");
   }
+
+  getProduct(id: string) {
+    return this.httpClient.get("/api/products/" + id);
+  }
 }
