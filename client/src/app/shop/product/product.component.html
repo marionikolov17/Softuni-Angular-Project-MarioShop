@@ -5,22 +5,19 @@
   <div
     class="product-image-wrapper d-flex justify-content-center align-items-center overflow-hidden"
   >
-    <img src="./assets/laptop2.jpg" alt="" class="w-100 h-100" />
+    <img src={{product?.imageSrc}} alt="" class="w-100 h-100" />
   </div>
   <div
-    class="product-details-wrapper d-block overflow-hidden position-relative"
+    class="product-details-wrapper d-block overflow-hidden position-relative ms-2"
   >
-    <h2 class="fw-bold fs-1">Laptop Asus Gaming</h2>
+    <h2 class="fw-bold fs-1">{{product?.title}}</h2>
     <p class="mt-3">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-      consequuntur sit dolore ipsam maxime? Praesentium magnam placeat, facere
-      et beatae, sint cupiditate quam culpa necessitatibus adipisci amet fuga,
-      quidem esse.
+      {{product?.description}}
     </p>
     <div
       class="position-absolute bottom-0 d-flex align-items-center w-100 justify-content-end"
     >
-      <h4 class="fw-bold my-auto me-4">1335$</h4>
+      <h4 class="fw-bold my-auto me-4">{{product?.price}}$</h4>
       <button class="btn btn-outline-primary">Add to cart</button>
     </div>
   </div>
