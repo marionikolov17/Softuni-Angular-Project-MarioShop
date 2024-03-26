@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
     password: ['', [Validators.required]]
   })
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
 
   login(): void {
     if (this.loginForm.invalid) {
@@ -22,7 +23,7 @@ export class LoginComponent {
 
     /* Login logic here */
     this.userService.login(this.loginForm.value.email || "", this.loginForm.value.password || "").subscribe(() => {
-
+      this.router.navigate(['/shop']);
     });
   }
 }
