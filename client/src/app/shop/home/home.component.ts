@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
+import { Product } from 'src/app/types/product';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products: any[] = [];
+  products: Product[] | undefined;
   isCategoryOpened: boolean = false;
 
   constructor(private shopService: ShopService) {}
