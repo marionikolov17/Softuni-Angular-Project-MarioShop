@@ -7,13 +7,15 @@ import { ShopService } from '../shop.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  products: any[] = [];
   isCategoryOpened: boolean = false;
 
   constructor(private shopService: ShopService) {}
 
   ngOnInit(): void {
-      this.shopService.getProducts().subscribe((data) => {
-        console.log(data);
+      this.shopService.getProducts().subscribe((response: any) => {
+        console.log(response.data);
+        this.products = response.data.products;
       })
   }
 
