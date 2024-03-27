@@ -9,17 +9,36 @@ import { User } from '../types/user';
 export class UserService {
   user: User | undefined;
 
-  //userSubscription: Subscription;
+  get isLoggedIn(): boolean {
+    return !!this.user;
+  }
 
   constructor(private httpClient: HttpClient) {}
 
-  register(username: string, email: string, password: string, rePassword: string) {
-    return this.httpClient.post('/api/auth/register', { username, email, password, rePassword });
+  register(
+    username: string,
+    email: string,
+    password: string,
+    rePassword: string
+  ) {
+    return this.httpClient.post('/api/auth/register', {
+      username,
+      email,
+      password,
+      rePassword,
+    }).pipe(
+      tap((response: any) => {
+        this.user = response.data.createdUser
+      })
+    )
   }
 
   login(email: string, password: string) {
     return this.httpClient.post('/api/auth/login', { email, password }).pipe(
-      tap((response) => console.log(response)),
+      tap((response: any) => {
+        console.log(response);
+        this.user = response.data.user;
+      })
     );
   }
 
