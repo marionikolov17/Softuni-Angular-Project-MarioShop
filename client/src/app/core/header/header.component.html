@@ -21,18 +21,21 @@
               >Home</a
             >
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li> -->
+
           <!-- Logged in user -->
-          <li class="nav-item d-none align-items-center ms-3">
+          <li class="nav-item d-flex align-items-center ms-3" *ngIf="isLoggedIn">
             <!-- d-flex -->
             <p class="mb-0 fw-bold">
-              Hello, <a routerLink="">MarioNikolov17</a>
+              Hello, {{username}}
             </p>
           </li>
+          <li class="nav-item ms-3 d-flex align-items-center" *ngIf="isLoggedIn">
+            <button class="btn btn-danger" routerLink="/auth/login">
+              Logout
+            </button>
+          </li>
           <!-- Guest user -->
-          <li class="nav-item ms-3 d-flex align-items-center">
+          <li class="nav-item ms-3 d-flex align-items-center" *ngIf="!isLoggedIn">
             <button class="btn btn-light" routerLink="/auth/login">
               Login
             </button>
