@@ -3,16 +3,16 @@
   <div class="added-products-wrapper w-100 d-flex justify-content-center">
     <div class="added-products-table d-block col-8 border">
       <!-- Added product row -->
-      <div class="product-row w-100 d-flex overflow-hidden border-bottom">
+      <div class="product-row w-100 d-flex overflow-hidden border-bottom" *ngFor="let product of cart?.products">
         <div
           class="product-image col-4 d-flex justify-content-center align-items-center overflow-hidden border-end"
         >
-          <img src="./assets/laptop1.png" alt="" />
+          <img src={{product.productId.imageSrc}} alt="" />
         </div>
         <div
           class="product-title col-4 d-flex justify-content-center align-items-center overflow-hidden border-end"
         >
-          <h3 class="fs-4 fw-bold">Laptop Lenovo Gaming L330</h3>
+          <h3 class="fs-4 fw-bold">{{product.productId.title}}</h3>
         </div>
         <div class="product-price col-4 overflow-hidden d-block p-3">
           <div class="input-group mt-1 mb-2">
@@ -22,44 +22,16 @@
               name="quantity"
               id="quantity"
               class="form-control ms-1"
-              value="1"
+              value={{product.quantity}}
             />
           </div>
-          <p class="mt-2 fs-5 text-center">Price: 1220$</p>
+          <p class="mt-2 fs-5 text-center">Price: {{product.quantity * product.productId.price}}$</p>
           <div class="d-flex justify-content-center">
             <button class="btn btn-outline-danger">Remove</button>
           </div>
         </div>
       </div>
-      <!-- Added product row -->
-      <div class="product-row w-100 d-flex overflow-hidden border-bottom">
-        <div
-          class="product-image col-4 d-flex justify-content-center align-items-center overflow-hidden border-end"
-        >
-          <img src="./assets/laptop2.jpg" alt="" />
-        </div>
-        <div
-          class="product-title col-4 d-flex justify-content-center align-items-center overflow-hidden border-end"
-        >
-          <h3 class="fs-4 fw-bold">Laptop Asus Gaming</h3>
-        </div>
-        <div class="product-price col-4 overflow-hidden d-block p-3">
-          <div class="input-group mt-1 mb-2">
-            <label for="quantity" class="my-auto me-1">Quantity</label>
-            <input
-              type="number"
-              name="quantity"
-              id="quantity"
-              class="form-control ms-1"
-              value="2"
-            />
-          </div>
-          <p class="mt-2 fs-5 text-center">Price: 3546$</p>
-          <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-danger">Remove</button>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
   <div class="order-details-wrapper w-100 d-flex justify-content-center mt-4">
