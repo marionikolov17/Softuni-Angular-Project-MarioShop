@@ -19,4 +19,8 @@ export class ShopService {
   getCart() {
     return this.httpClient.get("/api/cart");
   }
+
+  updateCart(cart: any) {
+    return this.httpClient.put("/api/cart", cart);
+  }
 }
