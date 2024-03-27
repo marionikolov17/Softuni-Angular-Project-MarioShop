@@ -5,7 +5,7 @@ const cartService = require("./../services/cartService");
 const { isAuth } = require("../middlewares/authMiddleware");
 const { getErrorMessage } = require("./../utils/errorUtil");
 
-router.param("id", async (req, res, next) => {
+/* router.param("id", async (req, res, next) => {
   try {
     const cart = await cartService.getCart(req.params.id);
 
@@ -15,12 +15,12 @@ router.param("id", async (req, res, next) => {
       .status(404)
       .json({ status: "fail", data: { message: "Order not found!" } });
   }
-});
+}); */
 
 /* isOwner - middleware */
 const isOwner = async (req, res, next) => {
   try {
-    const cart = await cartService.getCart(req.params.id);
+    const cart = await cartService.getCart(req.user._id);
 
     /* Check if cart is to current user */
     if (cart.userId != req.user._id) {
@@ -40,7 +40,7 @@ const isOwner = async (req, res, next) => {
 };
 
 /* Get cart */
-router.get("/:id", isAuth, isOwner, async (req, res) => {
+router.get("/", isAuth, isOwner, async (req, res) => {
   res.status(200).json({ status: "success", data: { cart: req.cart } });
 });
 

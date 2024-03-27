@@ -2,7 +2,7 @@ const cartModel = require("./../models/Cart");
 
 // const getCarts = async () => cartModel.find();
 
-const getCart = async (id) => cartModel.findById(id);
+const getCart = async (id) => cartModel.findOne({ userId: id });
 
 const createCart = async (data) => cartModel.create(data);
 
