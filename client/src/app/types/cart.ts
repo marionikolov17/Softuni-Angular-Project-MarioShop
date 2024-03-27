@@ -3,7 +3,7 @@ import { Product } from "./product"
 export interface Cart {
   _id: string,
   userId: string,
-  products: cartProduct[],
+  products: Array<cartProduct>,
   __v: number
 }
 
