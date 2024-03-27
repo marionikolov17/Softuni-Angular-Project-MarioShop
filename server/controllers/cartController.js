@@ -45,9 +45,9 @@ router.get("/", isAuth, isOwner, async (req, res) => {
 });
 
 /* Update cart */
-router.put("/:id", isAuth, isOwner, async (req, res) => {
+router.put("/", isAuth, isOwner, async (req, res) => {
   try {
-    await cartService.updateCart(req.params.id, req.body);
+    await cartService.updateCart(req.user._id, req.body);
 
     res.status(200).json({ status: "success", data: { message: "Cart successfully updated!" } });
   } catch (err) {
