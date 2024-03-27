@@ -6,12 +6,13 @@ const cartService = require("./../services/cartService");
 const { isAuth } = require("./../middlewares/authMiddleware");
 
 const { getErrorMessage } = require("./../utils/errorUtil");
+const userModel = require("../models/User");
 
 router.get("/user", async (req, res) => {
   try {
-    res.status(200).json({ status: "success", data: { user: req.user } });
+    res.status(200).json({ status: "success", data: { user: await userModel.findById(req.user._id) } });
   } catch (err) {
-    
+
   }
 });
 
