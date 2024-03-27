@@ -17,6 +17,6 @@ export class ShopService {
   }
 
   getCart() {
-    
+    return this.httpClient.get("/api/cart");
   }
 }
