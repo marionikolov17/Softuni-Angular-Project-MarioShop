@@ -18,4 +18,8 @@ export class CartComponent implements OnInit {
         this.cart = response.data.cart;
       })
   }
+
+  get isCartEmpty(): boolean {
+    return !this.cart;
+  }
 }
