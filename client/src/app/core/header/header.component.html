@@ -41,7 +41,7 @@
             </button>
           </li>
         </ul>
-        <a routerLink="/shop/cart" class="d-flex align-items-center text-decoration-none">
+        <a routerLink="/shop/cart" class="d-flex align-items-center text-decoration-none" *ngIf="isLoggedIn">
           <fa-icon
             [icon]="faCartShopping"
             class="position-relative mx-4 fs-5"
