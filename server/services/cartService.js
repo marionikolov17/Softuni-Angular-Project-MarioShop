@@ -6,7 +6,7 @@ const getCart = async (id) => cartModel.findOne({ userId: id });
 
 const createCart = async (data) => cartModel.create(data);
 
-const updateCart = async (id, data) => cartModel.findByIdAndUpdate(id, { products: data }, { runValidators: true });
+const updateCart = async (id, data) => cartModel.findOneAndUpdate({ userId: id }, { products: data }, { runValidators: true });
 
 // const deleteCart = async (id) => cartModel.findByIdAndDelete(id);
 
