@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { User } from '../types/user';
 
@@ -51,7 +51,10 @@ export class UserService implements OnDestroy {
     );
   }
 
-  logout() {}
+  logout() {
+    this.user = undefined;
+    return this.httpClient.get("/api/auth/logout");
+  }
 
   ngOnDestroy(): void {
       this.userSubscription.unsubscribe();
