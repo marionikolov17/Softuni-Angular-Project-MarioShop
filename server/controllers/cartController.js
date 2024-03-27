@@ -21,9 +21,9 @@ const { getErrorMessage } = require("./../utils/errorUtil");
 const isOwner = async (req, res, next) => {
   try {
     const cart = await cartService.getCart(req.user._id);
-
+    
     /* Check if cart is to current user */
-    if (cart.userId != req.user._id) {
+    if (!cart || cart.userId != req.user._id) {
       return res.status(401).json({
         status: "fail",
         data: { message: "You are unauthorized to view this cart!" },
