@@ -34,7 +34,7 @@
             Price: {{ product.quantity * product.productId.price }}$
           </p>
           <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-danger">Remove</button>
+            <button class="btn btn-outline-danger" (click)="removeProductFromCart(product.productId._id)">Remove</button>
           </div>
         </div>
       </div>
