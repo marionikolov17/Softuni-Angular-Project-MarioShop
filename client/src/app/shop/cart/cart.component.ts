@@ -36,11 +36,11 @@ export class CartComponent implements OnInit {
       }
 
       const newCart = {...this.cart, products};
-      console.log(newCart);
+      //console.log(newCart);
 
       this.shopService.updateCart(products).subscribe(() => {
         this.shopService.getCart().subscribe((response: any) => {
-          console.log(response);
+          //console.log(response);
           this.cart = response.data.cart;
         });
       });
