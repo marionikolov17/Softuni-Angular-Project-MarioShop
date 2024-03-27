@@ -7,9 +7,6 @@ import { User } from '../types/user';
   providedIn: 'root',
 })
 export class UserService {
-  private user$$ = new BehaviorSubject<User | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
-
   user: User | undefined;
 
   //userSubscription: Subscription;

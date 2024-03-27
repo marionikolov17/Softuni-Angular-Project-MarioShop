@@ -19,7 +19,8 @@ router.post("/register", async (req, res) => {
     res.status(201).json({
         status: "success",
         data: {
-            token
+            token,
+            createdUser
         }
     });
   } catch (err) {
@@ -34,13 +35,14 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const token = await authService.loginUser(req.body);
+    const {user, token} = await authService.loginUser(req.body);
 
     res.cookie("auth", token);
     res.status(200).json({
         status: "success",
         data: {
-            token
+            token,
+            user
         }
     });
   } catch (err) {
