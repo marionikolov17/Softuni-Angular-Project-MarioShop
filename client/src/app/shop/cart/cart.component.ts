@@ -42,12 +42,8 @@ export class CartComponent implements OnInit {
         }
       }
 
-      const newCart = {...this.cart, products};
-      //console.log(newCart);
-
       this.shopService.updateCart(products).subscribe(() => {
         this.shopService.getCart().subscribe((response: any) => {
-          //console.log(response);
           this.cart = response.data.cart;
         });
       });
@@ -59,10 +55,9 @@ export class CartComponent implements OnInit {
       let products = this.cart?.products || [];
 
       products = products.filter((item) => item.productId._id != productId);
-      //console.log(products)
+
       this.shopService.updateCart(products).subscribe(() => {
         this.shopService.getCart().subscribe((response: any) => {
-          //console.log(response);
           this.cart = response.data.cart;
         });
       });
