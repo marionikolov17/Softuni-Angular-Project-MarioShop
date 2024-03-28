@@ -6,24 +6,28 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   products: Product[] | undefined;
   isCategoryOpened: boolean = false;
   isSortOpened: boolean = false;
 
-  constructor(private shopService: ShopService, private activeRoute: ActivatedRoute) {}
+  constructor(
+    private shopService: ShopService,
+    private activeRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-      this.shopService.getProducts().subscribe((response: any) => {
-        console.log(response.data);
-        this.products = response.data.products;
-      })
+    console.log(this.activeRoute.snapshot.queryParams);
+    this.shopService.getProducts(this.activeRoute.snapshot.queryParams).subscribe((response: any) => {
+      console.log(response.data);
+      this.products = response.data.products;
+    });
   }
 
   toggle() {
-    this.isCategoryOpened = !this.isCategoryOpened
+    this.isCategoryOpened = !this.isCategoryOpened;
   }
 
   toggleSort() {

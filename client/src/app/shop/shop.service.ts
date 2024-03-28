@@ -8,7 +8,10 @@ export class ShopService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProducts() {
+  getProducts(params: any | undefined) {
+    if (params) {
+      return this.httpClient.get("/api/products", { params });
+    }
     return this.httpClient.get("/api/products");
   }
 
