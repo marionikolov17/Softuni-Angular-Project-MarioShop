@@ -69,6 +69,11 @@ export class CartComponent implements OnInit {
   }
 
   order() {
-    
+    if (this.orderForm.invalid) {
+      return
+    }
+
+    console.log("Order form is valid!");
+    // Order logic here
   }
 }
