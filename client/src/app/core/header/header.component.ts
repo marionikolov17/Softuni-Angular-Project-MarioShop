@@ -46,9 +46,6 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
-    console.log(this.router.url)
-
     this.router.navigate(['/shop'], { queryParams: { search: this.searchForm.value.search } });
-    
   }
 }
