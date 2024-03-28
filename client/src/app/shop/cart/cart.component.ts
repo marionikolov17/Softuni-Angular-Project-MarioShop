@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 import { Cart } from 'src/app/types/cart';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -9,8 +10,13 @@ import { Cart } from 'src/app/types/cart';
 })
 export class CartComponent implements OnInit {
   cart: Cart | undefined;
+  orderForm = this.fb.group({
+    name: ['', [Validators.required]],
+    phone: ['', [Validators.required, Validators.minLength(10)]],
+    address: ['', [Validators.required]]
+  });
 
-  constructor(private shopService: ShopService) {}
+  constructor(private shopService: ShopService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.shopService.getCart().subscribe((response: any) => {
