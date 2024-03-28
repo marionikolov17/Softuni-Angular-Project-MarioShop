@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     CoreModule,
     AuthModule,
     ReactiveFormsModule,
+    MatSliderModule
   ],
   exports: [
     ShopComponent
