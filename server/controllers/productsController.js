@@ -18,13 +18,17 @@ router.param("id", async (req, res, next) => {
 
 /* Get all products */
 router.get("/", async (req, res) => {
-  const { search } = req.query;
+  const { search, category } = req.query;
   //console.log(search);
 
   let products = await productsService.getProducts();
 
   if (search) {
     products = products.filter(product => product.title.toLowerCase().includes(search.toLocaleString().toLowerCase()));
+  }
+
+  if (category && (category === "laptops" || category === "computers")) {
+    products = products.filter(product => product.category === category);
   }
 
   res.status(200).json({
