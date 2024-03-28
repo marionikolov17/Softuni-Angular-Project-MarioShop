@@ -16,17 +16,25 @@
       </button>
       <!-- Category Options -->
       <div class="mt-3" id="categoryCollapse" *ngIf="isCategoryOpened">
-        <button class="btn btn-outline-secondary d-block mb-2" (click)="changeCategory('computers')">
+        <button
+          class="btn btn-outline-secondary d-block mb-2"
+          (click)="changeCategory('computers')"
+        >
           Computers
         </button>
-        <button class="btn btn-outline-primary d-block" (click)="changeCategory('laptops')">Laptops</button>
+        <button
+          class="btn btn-outline-primary d-block"
+          (click)="changeCategory('laptops')"
+        >
+          Laptops
+        </button>
       </div>
 
       <!-- Price Button -->
       <label for="" class="d-block mt-4 fw-bold mb-1">Price</label>
       <!-- Price Range Container -->
       <div class="range">
-        <div class="range-slider">
+        <!-- <div class="range-slider">
           <span class="range-selected"></span>
         </div>
         <div class="range-input">
@@ -46,12 +54,24 @@
             value="10000"
             step="10"
           />
-        </div>
+        </div> -->
+        
         <div class="range-price d-block">
           <label for="min">Min</label>
-          <input type="number" class="d-block" name="minPrice" value="0" (change)="changeMinPrice($event)" />
+          <input
+            type="number"
+            class="d-block"
+            name="minPrice"
+            value="0"
+            (change)="changeMinPrice($event)"
+          />
           <label for="max" class="d-block">Max</label>
-          <input type="number" name="maxPrice" value="10000" (change)="changeMaxPrice($event)" />
+          <input
+            type="number"
+            name="maxPrice"
+            value="10000"
+            (change)="changeMaxPrice($event)"
+          />
         </div>
       </div>
 
@@ -66,10 +86,30 @@
       </button>
       <!-- Sort By Dropdown -->
       <div class="sort-container mt-3 d-block" *ngIf="isSortOpened">
-        <button class="mt-2 btn btn-outline-primary d-block" (click)="changeSortBy('priceUp')">Price Up</button>
-        <button class="mt-2 btn btn-outline-primary d-block" (click)="changeSortBy('priceDown')">Price Down</button>
-        <button class="mt-2 btn btn-outline-primary d-block" (click)="changeSortBy('newAdded')">New Added</button>
-        <button class="mt-2 btn btn-outline-primary" (click)="changeSortBy('lastAdded')">Last Added</button>
+        <button
+          class="mt-2 btn btn-outline-primary d-block"
+          (click)="changeSortBy('priceUp')"
+        >
+          Price Up
+        </button>
+        <button
+          class="mt-2 btn btn-outline-primary d-block"
+          (click)="changeSortBy('priceDown')"
+        >
+          Price Down
+        </button>
+        <button
+          class="mt-2 btn btn-outline-primary d-block"
+          (click)="changeSortBy('newAdded')"
+        >
+          New Added
+        </button>
+        <button
+          class="mt-2 btn btn-outline-primary"
+          (click)="changeSortBy('lastAdded')"
+        >
+          Last Added
+        </button>
       </div>
     </div>
   </section>
