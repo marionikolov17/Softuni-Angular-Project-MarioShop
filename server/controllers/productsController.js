@@ -18,7 +18,14 @@ router.param("id", async (req, res, next) => {
 
 /* Get all products */
 router.get("/", async (req, res) => {
-  const products = await productsService.getProducts();
+  const { search } = req.query;
+  //console.log(search);
+
+  let products = await productsService.getProducts();
+
+  if (search) {
+    products = products.filter(product => product.title.toLowerCase().includes(search.toLocaleString().toLowerCase()));
+  }
 
   res.status(200).json({
     status: "success",
