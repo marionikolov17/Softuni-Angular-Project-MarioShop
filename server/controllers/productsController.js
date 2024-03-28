@@ -18,17 +18,30 @@ router.param("id", async (req, res, next) => {
 
 /* Get all products */
 router.get("/", async (req, res) => {
-  const { search, category } = req.query;
+  const { search, category, minPrice, maxPrice, sortBy } = req.query;
   //console.log(search);
 
   let products = await productsService.getProducts();
 
+  // Query params filter and sort
   if (search) {
     products = products.filter(product => product.title.toLowerCase().includes(search.toLocaleString().toLowerCase()));
   }
 
   if (category && (category === "laptops" || category === "computers")) {
     products = products.filter(product => product.category === category);
+  }
+
+  if (minPrice) {
+    products = products.filter(product => product.price >= +minPrice);
+  }
+
+  if (maxPrice) {
+    products = products.filter(product => product.price <= +maxPrice);
+  }
+
+  if (minPrice && maxPrice) {
+    products = products.filter(product => product.price >= +minPrice && product.price <= +maxPrice);
   }
 
   res.status(200).json({
