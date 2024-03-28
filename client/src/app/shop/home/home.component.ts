@@ -20,9 +20,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //console.log(this.activeRoute.snapshot.queryParams);
     this.activeRoute.queryParamMap.subscribe((params: any) => {
-      console.log(params)
       this.loadProducts(this.activeRoute.snapshot.queryParams);
     })
   }
