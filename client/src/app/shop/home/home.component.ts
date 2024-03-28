@@ -10,6 +10,7 @@ import { Product } from 'src/app/types/product';
 export class HomeComponent implements OnInit {
   products: Product[] | undefined;
   isCategoryOpened: boolean = false;
+  isSortOpened: boolean = false;
 
   constructor(private shopService: ShopService) {}
 
@@ -22,5 +23,9 @@ export class HomeComponent implements OnInit {
 
   toggle() {
     this.isCategoryOpened = !this.isCategoryOpened
+  }
+
+  toggleSort() {
+    this.isSortOpened = !this.isSortOpened;
   }
 }
