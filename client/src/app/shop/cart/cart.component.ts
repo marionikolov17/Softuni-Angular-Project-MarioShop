@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   }
 
   get isCartEmpty(): boolean {
-    return !this.cart;
+    return this.cart?.products.length ? false : true;
   }
 
   updateProductQuantity(event: any, productId: any) {
