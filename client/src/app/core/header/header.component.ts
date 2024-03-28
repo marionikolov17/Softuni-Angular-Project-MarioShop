@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { ShopService } from 'src/app/shop/shop.service';
@@ -13,7 +14,11 @@ export class HeaderComponent implements OnInit {
   faCartShopping = faCartShopping;
   totalProductsInCart: number = 0;
 
-  constructor(private userService: UserService, private router: Router, private shopService: ShopService) {}
+  searchForm = this.fb.group({
+    search: ['', [Validators.required]]
+  })
+
+  constructor(private userService: UserService, private router: Router, private shopService: ShopService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
       if (this.isLoggedIn) {
