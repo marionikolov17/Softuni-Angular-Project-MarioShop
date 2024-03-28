@@ -50,14 +50,15 @@
             >{{totalProductsInCart}}</span
           >
         </a>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" [formGroup]="searchForm">
           <input
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            formControlName="search"
           />
-          <button class="btn" type="submit">Search</button>
+          <button class="btn" type="submit" [disabled]="searchForm.invalid">Search</button>
         </form>
       </div>
     </div>
