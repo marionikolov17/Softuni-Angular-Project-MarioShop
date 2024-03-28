@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.queryParamMap.subscribe((params: any) => {
       this.loadProducts(this.activeRoute.snapshot.queryParams);
-    })
+    });
   }
 
   loadProducts(queryParams: any) {
@@ -41,31 +41,38 @@ export class HomeComponent implements OnInit {
   }
 
   changeCategory(category: string) {
-    const newParams = {...this.activeRoute.snapshot.queryParams, category: category};
+    const newParams = {
+      ...this.activeRoute.snapshot.queryParams,
+      category: category,
+    };
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
 
   changeMinPrice(event: any) {
-    const newParams = {...this.activeRoute.snapshot.queryParams, minPrice: event.target.value};
+    const newParams = {
+      ...this.activeRoute.snapshot.queryParams,
+      minPrice: event.target.value,
+    };
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
 
   changeMaxPrice(event: any) {
-    const newParams = {...this.activeRoute.snapshot.queryParams, maxPrice: event.target.value};
+    const newParams = {
+      ...this.activeRoute.snapshot.queryParams,
+      maxPrice: event.target.value,
+    };
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
 
   changeSortBy(sortBy: string) {
-    const newParams = {...this.activeRoute.snapshot.queryParams, sortBy};
+    const newParams = { ...this.activeRoute.snapshot.queryParams, sortBy };
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
 
   /* Slider functionalitty */
-  onRangeInput(event: any) {
-
-  }
+  onRangeInput(event: any) {}
 }
