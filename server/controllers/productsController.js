@@ -24,6 +24,7 @@ router.get("/", async (req, res) => {
   let products = await productsService.getProducts();
 
   // Query params filter and sort
+  // Filter
   if (search) {
     products = products.filter(product => product.title.toLowerCase().includes(search.toLocaleString().toLowerCase()));
   }
@@ -42,6 +43,18 @@ router.get("/", async (req, res) => {
 
   if (minPrice && maxPrice) {
     products = products.filter(product => product.price >= +minPrice && product.price <= +maxPrice);
+  }
+  // Sort
+  if (sortBy) {
+    if (sortBy === "priceUp") {
+      products = products.sort((a, b) => a.price-b.price);
+    } else if (sortBy === "priceDown") {
+      products = products.sort((a, b) => b.price-a.price);
+    } else if (sortBy === "newAdded") {
+      products = products.sort((a, b) => new Date(b.createdAt)-new Date(a.createdAt));
+    } else if (sortBy === "lastAdded") {
+      products = products.sort((a, b) => new Date(a.createdAt)-new Date(b.createdAt));
+    }
   }
 
   res.status(200).json({
