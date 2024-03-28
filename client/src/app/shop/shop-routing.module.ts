@@ -6,11 +6,12 @@ import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthActivate } from '../guards/auth.activate';
 
 const routes: Routes = [
   { path: "shop", component: ShopComponent, children: [
     { path: "", pathMatch: "full", component: HomeComponent },
-    { path: "cart", component: CartComponent },
+    { path: "cart", component: CartComponent, canActivate: [AuthActivate] },
     { path: ":id", component: ProductComponent }
   ] },
   { path: "auth", component: ShopComponent, children: [
