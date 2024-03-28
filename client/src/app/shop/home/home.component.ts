@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 import { Product } from 'src/app/types/product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   isCategoryOpened: boolean = false;
   isSortOpened: boolean = false;
 
-  constructor(private shopService: ShopService) {}
+  constructor(private shopService: ShopService, private activeRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
       this.shopService.getProducts().subscribe((response: any) => {
