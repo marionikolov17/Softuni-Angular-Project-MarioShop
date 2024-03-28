@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     CoreModule,
     AuthModule,
+    ReactiveFormsModule
   ],
   exports: [
     ShopComponent
