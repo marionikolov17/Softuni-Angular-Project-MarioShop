@@ -79,6 +79,7 @@ export class CartComponent implements OnInit {
     }
 
     this.shopService.order(orderData).subscribe(() => {
+      alert("Ordered successfully!");
       this.router.navigate(['/shop']);
     });
   }
