@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const ordersService = require("./../services/ordersService");
+const cartService = require("./../services/cartService");
 
 const { isAuth, isAdmin } = require("../middlewares/authMiddleware");
 const { getErrorMessage } = require("./../utils/errorUtil");
@@ -34,6 +35,9 @@ router.get("/", async (req, res) => {
 router.post("/", isAuth, async (req, res) => {
   try {
     await ordersService.createOrder({...req.body, userId: req.user._id});
+
+    // Delete cart
+    await cartService.updateCart(req.user._id, []);
 
     res
       .status(201)
