@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { ShopService } from 'src/app/shop/shop.service';
 import { UserService } from 'src/app/shop/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/shop/user.service';
 export class HeaderComponent {
   faCartShopping = faCartShopping;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private shopService: ShopService) {}
 
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn;
