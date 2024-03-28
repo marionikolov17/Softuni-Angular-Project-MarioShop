@@ -60,7 +60,7 @@ router.post("/admin-login", async (req, res) => {
     const {user, token} = await authService.loginUser(req.body);
 
     if (!user.isAdmin) {
-      throw new Error("Invalid email or password!");
+      throw new Error("Email or password are incorrect!");
     }
 
     res.cookie("auth", token);
