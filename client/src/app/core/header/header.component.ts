@@ -40,4 +40,10 @@ export class HeaderComponent implements OnInit {
     this.userService.logout();
     this.router.navigate(['/auth/login']);
   }
+
+  search() {
+    if (this.searchForm.invalid) {
+      return;
+    }
+  }
 }
