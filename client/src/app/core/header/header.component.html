@@ -50,7 +50,7 @@
             >{{totalProductsInCart}}</span
           >
         </a>
-        <form class="d-flex" role="search" [formGroup]="searchForm">
+        <form class="d-flex" role="search" [formGroup]="searchForm" (ngSubmit)="search()">
           <input
             class="form-control me-2"
             type="search"

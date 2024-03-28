@@ -45,5 +45,7 @@ export class HeaderComponent implements OnInit {
     if (this.searchForm.invalid) {
       return;
     }
+
+    this.router.navigate(['/shop'], { queryParams: { search: this.searchForm.value.search } });
   }
 }
