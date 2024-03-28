@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShopService } from '../shop.service';
 import { Cart } from 'src/app/types/cart';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
     address: ['', [Validators.required]]
   });
 
-  constructor(private shopService: ShopService, private fb: FormBuilder) {}
+  constructor(private shopService: ShopService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.shopService.getCart().subscribe((response: any) => {
@@ -75,5 +76,15 @@ export class CartComponent implements OnInit {
 
     console.log("Order form is valid!");
     // Order logic here
+    const orderData = {
+      products: this.cart?.products,
+      name: this.orderForm.value.name,
+      phone: this.orderForm.value.phone,
+      address: this.orderForm.value.address
+    }
+
+    this.shopService.order(orderData).subscribe(() => {
+      this.router.navigate(['/shop']);
+    });
   }
 }
