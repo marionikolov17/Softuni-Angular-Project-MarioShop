@@ -27,7 +27,8 @@
               id="quantity"
               class="form-control ms-1"
               value="{{ product.quantity }}"
-              (keyup)="updateProductQuantity($event, product.productId._id)"
+              min="1"
+              (change)="updateProductQuantity($event, product.productId._id)"
             />
           </div>
           <p class="mt-2 fs-5 text-center">
