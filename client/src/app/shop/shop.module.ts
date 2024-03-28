@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SliderModule } from '@syncfusion/ej2-angular-inputs';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     CoreModule,
     AuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SliderModule
   ],
   exports: [
     ShopComponent
