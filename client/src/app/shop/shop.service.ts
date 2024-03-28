@@ -23,4 +23,8 @@ export class ShopService {
   updateCart(cart: any) {
     return this.httpClient.put("/api/cart", cart);
   }
+
+  order(data: any) {
+    return this.httpClient.post("/api/orders", data);
+  }
 }
