@@ -55,6 +55,32 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/admin-login", async (req, res) => {
+  try {
+    const {user, token} = await authService.loginUser(req.body);
+
+    if (!user.isAdmin) {
+      throw new Error("Invalid email or password!");
+    }
+
+    res.cookie("auth", token);
+    res.status(200).json({
+        status: "success",
+        data: {
+            token,
+            user
+        }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      data: {
+        errorMessage: getErrorMessage(err),
+      },
+    });
+  }
+});
+
 router.get("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
 });
