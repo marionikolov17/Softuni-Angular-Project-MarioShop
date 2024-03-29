@@ -20,7 +20,7 @@ export class AdminProductsService {
     return this.httpClient.put(`/api/products/${id}`, data);
   }
 
-  deleteProduct() {
-
+  deleteProduct(id: string) {
+    return this.httpClient.delete(`/api/products/${id}`);
   }
 }

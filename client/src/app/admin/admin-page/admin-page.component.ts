@@ -125,4 +125,12 @@ export class AdminPageComponent implements OnInit {
       this.showProductsPage();
     })
   }
+
+  deleteProduct(id: string) {
+    if (confirm("Are you sure?")) {
+      this.adminProductsService.deleteProduct(id).subscribe(() => {
+        this.fetchProducts();
+      });
+    }
+  }
 }
