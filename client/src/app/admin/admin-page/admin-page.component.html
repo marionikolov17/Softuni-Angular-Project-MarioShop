@@ -228,8 +228,8 @@
           <input
             type="text"
             class="form-control form-control-lg"
-            id="name"
-            name="name"
+            id="title"
+            name="title"
             placeholder="Enter your product name..."
           />
           <p class="invalid-input-message text-danger">
@@ -254,11 +254,13 @@
         <div class="mb-4">
           <label for="imageSrc" class="form-label fs-5">Product image</label>
           <input
+            type="text"
             class="form-control form-control-lg"
-            type="file"
             id="imageSrc"
+            name="imageSrc"
+            placeholder="Enter product image url..."
           />
-          <p class="invalid-input-message text-danger">Invalid file!</p>
+          <p class="invalid-input-message text-danger">Invalid image url!</p>
         </div>
 
         <div class="mb-4">
@@ -268,6 +270,7 @@
             <span class="input-group-text">0.00</span>
             <input
               type="number"
+              name="price"
               class="form-control form-control-lg"
               placeholder="Enter product price..."
               aria-label="Dollar amount (with dot and two decimal places)"
