@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { CoreModule } from '../core/core.module';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,7 +20,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AdminRoutingModule,
     ReactiveFormsModule,
     CoreModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }
