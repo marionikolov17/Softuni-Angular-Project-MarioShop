@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     CoreModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
