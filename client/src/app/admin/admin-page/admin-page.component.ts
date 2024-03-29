@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {
   faHome,
@@ -13,7 +13,7 @@ import { AdminProductsService } from '../admin-products.service';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.css'],
 })
-export class AdminPageComponent {
+export class AdminPageComponent implements OnInit {
   /* Icons - FontAwesome */
   faHome = faHome;
   faCartPlus = faCartPlus;
@@ -57,6 +57,10 @@ export class AdminPageComponent {
   });
 
   constructor(private fb: FormBuilder, private adminProductsService: AdminProductsService) {}
+
+  ngOnInit(): void {
+      
+  }
 
   onCreate() {
     if (this.createForm.invalid) {
