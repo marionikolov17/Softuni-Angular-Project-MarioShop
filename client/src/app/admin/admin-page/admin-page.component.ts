@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { faHome, faCartPlus, faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, Validators } from '@angular/forms';
+import {
+  faHome,
+  faCartPlus,
+  faPlus,
+  faSignOutAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+  styleUrls: ['./admin-page.component.css'],
 })
 export class AdminPageComponent {
   /* Icons - FontAwesome */
@@ -41,7 +47,13 @@ export class AdminPageComponent {
     this.isEditPageShown = false;
   }
 
+  createForm = this.fb.group({
+    title: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    imageSrc: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    price: ['', [Validators.required]]
+  });
 
-
-  
+  constructor(private fb: FormBuilder) {}
 }
