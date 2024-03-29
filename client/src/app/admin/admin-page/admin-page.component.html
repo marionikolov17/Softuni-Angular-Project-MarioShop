@@ -301,9 +301,15 @@
           </ng-container>
         </div>
 
-        
+        <div class="mb-4">
+          <label for="category" class="form-label fs-5">Product category</label>
+          <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="category" id="category" formControlName="category">
+            <option value="computers" selected>Computers</option>
+            <option value="laptops">Laptops</option>
+          </select>
+        </div>
 
-        <button class="btn btn-outline-primary fs-5 mt-5">Create</button>
+        <button class="btn btn-outline-primary fs-5 mt-5" [disabled]="createForm.invalid">Create</button>
       </form>
     </section>
 
