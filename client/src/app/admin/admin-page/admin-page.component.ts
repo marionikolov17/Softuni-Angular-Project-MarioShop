@@ -7,6 +7,7 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { AdminProductsService } from '../admin-products.service';
+import { Product } from 'src/app/types/product';
 
 @Component({
   selector: 'app-admin-page',
@@ -56,10 +57,14 @@ export class AdminPageComponent implements OnInit {
     price: ['', [Validators.required]]
   });
 
+  products: Product[] | undefined;
+
   constructor(private fb: FormBuilder, private adminProductsService: AdminProductsService) {}
 
   ngOnInit(): void {
-      
+    this.adminProductsService.getProducts().subscribe((response: any) => {
+      this.products = response.data.products;
+    });
   }
 
   onCreate() {
