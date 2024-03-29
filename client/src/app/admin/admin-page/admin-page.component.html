@@ -119,6 +119,7 @@
                 role="switch"
                 id="flexSwitchCheckDefault"
                 [checked]="product.isActive"
+                (change)="toggleActiveProduct($event, product)"
               />
               <label class="form-check-label" for="flexSwitchCheckDefault"
                 >Active</label

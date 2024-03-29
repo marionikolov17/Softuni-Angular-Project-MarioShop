@@ -133,4 +133,10 @@ export class AdminPageComponent implements OnInit {
       });
     }
   }
+
+  toggleActiveProduct(event: any, product: Product) {
+    this.adminProductsService.updateProduct({...product, isActive: event.target.checked }, product._id).subscribe(() => {
+      this.fetchProducts();
+    })
+  }
 }
