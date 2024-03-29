@@ -57,6 +57,7 @@ export class AdminPageComponent implements OnInit {
     price: ['', [Validators.required]]
   });
 
+  editingProductId: string = ""
   products: Product[] | undefined;
 
   constructor(private fb: FormBuilder, private adminProductsService: AdminProductsService) {}
