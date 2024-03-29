@@ -307,6 +307,11 @@
             <option value="computers" selected>Computers</option>
             <option value="laptops">Laptops</option>
           </select>
+          <ng-container *ngIf="createForm.get('category')?.touched">
+            <p class="invalid-input-message text-danger" *ngIf="createForm.get('category')?.errors?.['required']">
+              Product category is required!
+            </p>
+          </ng-container>
         </div>
 
         <button class="btn btn-outline-primary fs-5 mt-5" [disabled]="createForm.invalid">Create</button>
