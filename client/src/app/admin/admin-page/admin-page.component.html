@@ -228,7 +228,7 @@
       <h3 class="m-5 display-6 fw-bold">Create new product</h3>
 
       <!-- Product form -->
-      <form class="m-3 p-3" [formGroup]="createForm">
+      <form class="m-3 p-3" [formGroup]="createForm" (ngSubmit)="onCreate()">
         <div class="mb-4">
           <label for="name" class="form-label fs-5">Product name</label>
           <input
