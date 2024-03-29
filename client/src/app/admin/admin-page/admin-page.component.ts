@@ -6,6 +6,7 @@ import {
   faPlus,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { AdminProductsService } from '../admin-products.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -55,9 +56,16 @@ export class AdminPageComponent {
     price: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private adminProductsService: AdminProductsService) {}
 
   onCreate() {
-    
+    if (this.createForm.invalid) {
+      return
+    }
+
+    // Create product logic here
+    this.adminProductsService.createProduct(this.createForm.value).subscribe(() => {
+      this.showProductsPage();
+    });
   }
 }

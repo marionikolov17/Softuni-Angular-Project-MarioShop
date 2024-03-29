@@ -12,8 +12,8 @@ export class AdminProductsService {
     return this.httpClient.get("/api/products");
   }
 
-  createProduct() {
-
+  createProduct(data: any) {
+    return this.httpClient.post("/api/products", data);
   }
 
   updateProduct() {
@@ -21,6 +21,6 @@ export class AdminProductsService {
   }
 
   deleteProduct() {
-    
+
   }
 }
