@@ -58,7 +58,10 @@
   <!-- Admin content -->
   <div class="admin-content col-9 overflow-hidden">
     <!-- Admin products page -->
-    <section class="admin-products-page w-100 d-block" *ngIf="isProductsPageShown">
+    <section
+      class="admin-products-page w-100 d-block"
+      *ngIf="isProductsPageShown"
+    >
       <!-- d-block -->
       <h3 class="m-5 display-6 fw-bold">Total products - 2</h3>
 
@@ -218,11 +221,14 @@
     </section>
 
     <!-- Admin create product page -->
-    <section class="admin-create-product-page w-100 d-block" *ngIf="isCreatePageShown">
+    <section
+      class="admin-create-product-page w-100 d-block"
+      *ngIf="isCreatePageShown"
+    >
       <h3 class="m-5 display-6 fw-bold">Create new product</h3>
 
       <!-- Product form -->
-      <form class="m-3 p-3">
+      <form class="m-3 p-3" [formGroup]="createForm">
         <div class="mb-4">
           <label for="name" class="form-label fs-5">Product name</label>
           <input
@@ -231,10 +237,13 @@
             id="title"
             name="title"
             placeholder="Enter your product name..."
+            formControlName="title"
           />
-          <p class="invalid-input-message text-danger">
-            Product name is invalid!
-          </p>
+          <ng-container *ngIf="createForm.get('title')?.touched">
+            <p class="invalid-input-message text-danger" *ngIf="createForm.get('title')?.errors?.['required']">
+              Product name is required!
+            </p>
+          </ng-container>
         </div>
 
         <div class="mb-4">
@@ -245,10 +254,13 @@
             name="description"
             class="form-control"
             placeholder="Enter product description..."
+            formControlName="description"
           ></textarea>
-          <p class="invalid-input-message text-danger">
-            Product description is invalid!
-          </p>
+          <ng-container *ngIf="createForm.get('description')?.touched">
+            <p class="invalid-input-message text-danger" *ngIf="createForm.get('description')?.errors?.['required']">
+              Product description is required!
+            </p>
+          </ng-container>
         </div>
 
         <div class="mb-4">
@@ -259,8 +271,13 @@
             id="imageSrc"
             name="imageSrc"
             placeholder="Enter product image url..."
+            formControlName="imageSrc"
           />
-          <p class="invalid-input-message text-danger">Invalid image url!</p>
+          <ng-container *ngIf="createForm.get('imageSrc')?.touched">
+            <p class="invalid-input-message text-danger" *ngIf="createForm.get('imageSrc')?.errors?.['required']">
+              Product image URL is required!
+            </p>
+          </ng-container>
         </div>
 
         <div class="mb-4">
@@ -274,19 +291,27 @@
               class="form-control form-control-lg"
               placeholder="Enter product price..."
               aria-label="Dollar amount (with dot and two decimal places)"
+              formControlName="price"
             />
           </div>
-          <p class="invalid-input-message text-danger">
-            Product price is invalid!
-          </p>
+          <ng-container *ngIf="createForm.get('price')?.touched">
+            <p class="invalid-input-message text-danger" *ngIf="createForm.get('price')?.errors?.['required']">
+              Product price is required!
+            </p>
+          </ng-container>
         </div>
+
+        
 
         <button class="btn btn-outline-primary fs-5 mt-5">Create</button>
       </form>
     </section>
 
     <!-- Admin edit product page -->
-    <section class="admin-create-product-page w-100 d-block" *ngIf="isEditPageShown">
+    <section
+      class="admin-create-product-page w-100 d-block"
+      *ngIf="isEditPageShown"
+    >
       <h3 class="m-5 display-6 fw-bold">Edit product</h3>
 
       <!-- Product form -->
