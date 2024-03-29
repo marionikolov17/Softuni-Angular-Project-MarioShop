@@ -16,8 +16,8 @@ export class AdminProductsService {
     return this.httpClient.post("/api/products", data);
   }
 
-  updateProduct() {
-
+  updateProduct(data: any, id: string) {
+    return this.httpClient.put(`/api/products/${id}`, data);
   }
 
   deleteProduct() {

@@ -49,33 +49,80 @@ export class AdminPageComponent implements OnInit {
     this.isEditPageShown = false;
   }
 
+  showEditPage() {
+    this.isProductsPageShown = false;
+    this.isOrdersPageShown = false;
+    this.isCreatePageShown = false;
+    this.isEditPageShown = true;
+  }
+
   createForm = this.fb.group({
     title: ['', [Validators.required]],
     description: ['', [Validators.required]],
     imageSrc: ['', [Validators.required]],
     category: ['', [Validators.required]],
-    price: ['', [Validators.required]]
+    price: ['', [Validators.required]],
   });
 
-  editingProductId: string = ""
+  editProduct: Product | undefined = undefined;
   products: Product[] | undefined;
 
-  constructor(private fb: FormBuilder, private adminProductsService: AdminProductsService) {}
+  editForm = this.fb.group({
+    title: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    imageSrc: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    price: ['', [Validators.required]],
+  });
+
+  constructor(
+    private fb: FormBuilder,
+    private adminProductsService: AdminProductsService
+  ) {}
 
   ngOnInit(): void {
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
     this.adminProductsService.getProducts().subscribe((response: any) => {
       this.products = response.data.products;
     });
   }
 
+  setEditProduct(product: Product) {
+    this.editProduct = product;
+    this.editForm.controls.title.setValue(product.title);
+    this.editForm.controls.description.setValue(product.description);
+    this.editForm.controls.imageSrc.setValue(product.imageSrc);
+    this.editForm.controls.category.setValue(product.category);
+    this.editForm.controls.price.setValue(product.price + "");
+    this.showEditPage();
+  }
+
   onCreate() {
     if (this.createForm.invalid) {
-      return
+      return;
     }
 
     // Create product logic here
-    this.adminProductsService.createProduct(this.createForm.value).subscribe(() => {
+    this.adminProductsService
+      .createProduct(this.createForm.value)
+      .subscribe(() => {
+        this.fetchProducts();
+        this.showProductsPage();
+      });
+  }
+
+  onEdit() {
+    if (this.editForm.invalid) {
+      return;
+    }
+
+    // Edit product logic here
+    this.adminProductsService.updateProduct(this.editForm.value, this.editProduct?._id || "").subscribe(() => {
+      this.fetchProducts();
       this.showProductsPage();
-    });
+    })
   }
 }
