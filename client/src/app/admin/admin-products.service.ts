@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,21 @@ import { Injectable } from '@angular/core';
 })
 export class AdminProductsService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  getProducts() {
+    return this.httpClient.get("/api/products");
+  }
+
+  createProduct() {
+
+  }
+
+  updateProduct() {
+
+  }
+
+  deleteProduct() {
+    
+  }
 }
