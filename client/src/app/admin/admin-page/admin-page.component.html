@@ -63,7 +63,7 @@
       *ngIf="isProductsPageShown"
     >
       <!-- d-block -->
-      <h3 class="m-5 display-6 fw-bold">Total products - 2</h3>
+      <h3 class="m-5 display-6 fw-bold">Total products - {{products?.length || 0}}</h3>
 
       <!-- Dropshipping bot form for laptop.bg and desktop.bg -->
       <form class="mx-5">
@@ -137,7 +137,7 @@
 
     <!-- Admin orders page -->
     <section class="admin-orders-page w-100 d-block" *ngIf="isOrdersPageShown">
-      <h3 class="m-5 display-6 fw-bold">Total orders - 2</h3>
+      <h3 class="m-5 display-6 fw-bold">Total orders - {{orders?.length || 0}}</h3>
 
       <!-- List of all orders -->
       <div class="orders d-block m-5">
