@@ -1,8 +1,8 @@
 const ordersModel = require("./../models/Order");
 
-const getOrders = async () => ordersModel.find().populate('products.productId');
+const getOrders = async () => ordersModel.find().populate('products.productId').populate('userId');
 
-const getOrder = async (id) => ordersModel.findById(id).populate('products.productId');
+const getOrder = async (id) => ordersModel.findById(id).populate('products.productId').populate('userId');
 
 const createOrder = async (data) => ordersModel.create(data);
 
