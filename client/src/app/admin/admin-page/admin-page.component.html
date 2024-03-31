@@ -137,47 +137,26 @@
       <!-- List of all orders -->
       <div class="orders d-block m-5">
         <!-- Order item -->
-        <div class="order border d-block mb-4">
+        <div class="order border d-block mb-4" *ngFor="let order of orders">
           <!-- Order product line -->
-          <div class="product-order-item d-flex">
+          <div class="product-order-item d-flex" *ngFor="let product of order.products">
             <div class="order-image-container border-end">
-              <img src="./assets/laptop1.png" alt="" class="h-100" />
+              <img src={{product.productId.imageSrc}} alt="" class="h-100" />
             </div>
             <div
               class="text-container d-flex align-items-center justify-content-center border-end col-4"
             >
-              <h4 class="my-auto fs-5">Laptop Lenovo Gaming L330</h4>
+              <h4 class="my-auto fs-5">{{product.productId.title}}</h4>
             </div>
             <div
               class="quantity-container d-flex align-items-center justify-content-center border-end col-4"
             >
-              <p class="my-auto fs-5">Quantity x 5</p>
+              <p class="my-auto fs-5">Quantity x {{product.quantity}}</p>
             </div>
             <div
               class="price-container d-flex justify-content-center align-items-center col-3"
             >
-              <p class="my-auto fs-5">Price: 1550$</p>
-            </div>
-          </div>
-          <!-- Order product line -->
-          <div class="product-order-item d-flex border-top">
-            <div class="order-image-container border-end">
-              <img src="./assets/laptop2.jpg" alt="" class="h-100" />
-            </div>
-            <div
-              class="text-container d-flex align-items-center justify-content-center border-end col-4"
-            >
-              <h4 class="my-auto fs-5">Laptop Asus Gaming</h4>
-            </div>
-            <div
-              class="quantity-container d-flex align-items-center justify-content-center border-end col-4"
-            >
-              <p class="my-auto fs-5">Quantity x 3</p>
-            </div>
-            <div
-              class="price-container d-flex justify-content-center align-items-center col-3"
-            >
-              <p class="my-auto fs-5">Price: 2250$</p>
+              <p class="my-auto fs-5">Price: {{product.quantity * product.productId.price}}$</p>
             </div>
           </div>
           <!-- Order customer details -->
@@ -185,9 +164,10 @@
             class="customer-details border-top d-flex justify-content-center align-items-center"
           >
             <p class="m-3">
-              <span class="fw-bold">Email:</span> marionikolov@abv.bg,
-              <span class="fw-bold">Address:</span> Some random address on the
-              internet, <span class="fw-bold">Phone:</span> 0885650909
+              <span class="fw-bold">Email:</span> {{order.userId.email}},
+              <span class="fw-bold">Name:</span> {{order.name}},
+              <span class="fw-bold">Address:</span> {{order.address}}.
+              <span class="fw-bold">Phone:</span> {{order.phone}}
             </p>
           </div>
           <!-- Finish order -->
