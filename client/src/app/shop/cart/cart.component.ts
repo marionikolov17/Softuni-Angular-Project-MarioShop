@@ -59,6 +59,7 @@ export class CartComponent implements OnInit {
       this.shopService.updateCart(products).subscribe(() => {
         this.shopService.getCart().subscribe((response: any) => {
           this.cart = response.data.cart;
+          this.router.navigate(['/shop/cart'])
         });
       });
     }
