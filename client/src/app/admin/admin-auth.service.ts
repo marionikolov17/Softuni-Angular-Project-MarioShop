@@ -22,4 +22,9 @@ export class AdminAuthService {
         this.user = response.data.user;
       }));
   }
+
+  logout() {
+    this.user = undefined;
+    return this.httpClient.get("/api/auth/logout");
+  }
 }
