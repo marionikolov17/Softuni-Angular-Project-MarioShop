@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   products: Product[] | undefined;
   isCategoryOpened: boolean = false;
   isSortOpened: boolean = false;
+  minPrice: number = 0;
+  maxPrice: number = 10000;
 
   constructor(
     private shopService: ShopService,
@@ -54,6 +56,7 @@ export class HomeComponent implements OnInit {
       ...this.activeRoute.snapshot.queryParams,
       minPrice: event.target.value,
     };
+    this.minPrice = +event.target.value;
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
@@ -63,6 +66,7 @@ export class HomeComponent implements OnInit {
       ...this.activeRoute.snapshot.queryParams,
       maxPrice: event.target.value,
     };
+    this.maxPrice = +event.target.value;
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }

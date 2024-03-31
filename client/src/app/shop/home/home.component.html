@@ -65,14 +65,14 @@
             type="number"
             class="d-block"
             name="minPrice"
-            value="0"
+            [value]="minPrice"
             (change)="changeMinPrice($event)"
           />
           <label for="max" class="d-block">Max</label>
           <input
             type="number"
             name="maxPrice"
-            value="10000"
+            [value]="maxPrice"
             (change)="changeMaxPrice($event)"
           />
         </div>
