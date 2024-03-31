@@ -22,10 +22,18 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
       if (this.isLoggedIn) {
-        this.shopService.getCart().subscribe((response: any) => {
-          this.totalProductsInCart = response.data.cart.products.length;
+        this.getCartLength();
+
+        this.router.events.subscribe(() => {
+          this.getCartLength();
         })
       }
+  }
+
+  getCartLength() {
+    this.shopService.getCart().subscribe((response: any) => {
+      this.totalProductsInCart = response.data.cart.products.length;
+    })
   }
 
   get isLoggedIn(): boolean {
