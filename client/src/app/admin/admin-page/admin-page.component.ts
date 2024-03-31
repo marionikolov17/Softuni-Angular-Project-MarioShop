@@ -149,7 +149,6 @@ export class AdminPageComponent implements OnInit {
   // Orders logic
   fetchOrders() {
     this.adminOrdersService.getOrders().subscribe((response: any) => {
-      console.log(response);
       this.orders = response.data.orders;
     });
   }
