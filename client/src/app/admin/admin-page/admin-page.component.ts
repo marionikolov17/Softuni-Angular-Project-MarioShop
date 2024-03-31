@@ -10,6 +10,8 @@ import { AdminProductsService } from '../admin-products.service';
 import { Product } from 'src/app/types/product';
 import { AdminOrdersService } from '../admin-orders.service';
 import { Order } from 'src/app/types/order';
+import { AdminAuthService } from '../admin-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-page',
@@ -81,7 +83,9 @@ export class AdminPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private adminProductsService: AdminProductsService,
-    private adminOrdersService: AdminOrdersService
+    private adminOrdersService: AdminOrdersService,
+    private adminAuthService: AdminAuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -175,6 +179,7 @@ export class AdminPageComponent implements OnInit {
 
   // Auth
   logout() {
-    console.log("logout from admin!");
+    this.adminAuthService.logout()
+    this.router.navigate(['/admin/login'])
   }
 }
