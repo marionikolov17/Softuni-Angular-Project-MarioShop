@@ -9,6 +9,7 @@ import {
 import { AdminProductsService } from '../admin-products.service';
 import { Product } from 'src/app/types/product';
 import { AdminOrdersService } from '../admin-orders.service';
+import { Order } from 'src/app/types/order';
 
 @Component({
   selector: 'app-admin-page',
@@ -67,6 +68,7 @@ export class AdminPageComponent implements OnInit {
 
   editProduct: Product | undefined = undefined;
   products: Product[] | undefined;
+  orders: Order[] | undefined;
 
   editForm = this.fb.group({
     title: ['', [Validators.required]],
@@ -84,6 +86,7 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProducts();
+    this.fetchOrders();
   }
 
   // Products logic
@@ -145,6 +148,9 @@ export class AdminPageComponent implements OnInit {
 
   // Orders logic
   fetchOrders() {
-    
+    this.adminOrdersService.getOrders().subscribe((response: any) => {
+      console.log(response);
+      this.orders = response.data.orders;
+    });
   }
 }
