@@ -79,7 +79,4 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/shop'], { queryParams: newParams });
     this.loadProducts(newParams);
   }
-
-  /* Slider functionalitty */
-  onRangeInput(event: any) {}
 }
