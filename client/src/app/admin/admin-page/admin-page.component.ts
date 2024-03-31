@@ -153,4 +153,18 @@ export class AdminPageComponent implements OnInit {
       this.orders = response.data.orders;
     });
   }
+
+  get totalOrders(): number {
+    let count = 0;
+    this.orders?.forEach(order => {
+      if (!order.isDone) count++;
+    })
+    return count;
+  }
+
+  doneOrder(id: string) {
+    this.adminOrdersService.doneOrder(id).subscribe(() => {
+      this.fetchOrders();
+    });
+  }
 }

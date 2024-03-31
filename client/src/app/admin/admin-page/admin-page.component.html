@@ -137,7 +137,7 @@
 
     <!-- Admin orders page -->
     <section class="admin-orders-page w-100 d-block" *ngIf="isOrdersPageShown">
-      <h3 class="m-5 display-6 fw-bold">Total orders - {{orders?.length || 0}}</h3>
+      <h3 class="m-5 display-6 fw-bold">Total orders - {{totalOrders || 0}}</h3>
 
       <!-- List of all orders -->
       <div class="orders d-block m-5">
@@ -187,7 +187,7 @@
             </div>
             <!-- Finish order -->
             <div class="finish-order border-top d-flex justify-content-center">
-              <button class="btn btn-outline-success my-3">Done</button>
+              <button class="btn btn-outline-success my-3" (click)="doneOrder(order._id)">Done</button>
             </div>
           </div>
         </ng-container>
