@@ -63,7 +63,7 @@ router.post("/admin-login", async (req, res) => {
       throw new Error("Email or password are incorrect!");
     }
 
-    res.cookie("auth", token);
+    res.cookie("admin-auth", token);
     res.status(200).json({
         status: "success",
         data: {
@@ -83,6 +83,10 @@ router.post("/admin-login", async (req, res) => {
 
 router.get("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
+});
+
+router.get("/admin-logout", isAuth, (req, res) => {
+  res.clearCookie("admin-auth");
 });
 
 module.exports = router;

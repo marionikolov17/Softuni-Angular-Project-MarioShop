@@ -17,7 +17,7 @@ export class AdminAuthService {
 
   login(email: string, password: string) {
     return this.httpClient
-      .post('/api/auth/login', { email, password })
+      .post('/api/auth/admin-login', { email, password })
       .pipe(tap((response: any) => {
         this.user = response.data.user;
       }));
@@ -25,6 +25,6 @@ export class AdminAuthService {
 
   logout() {
     this.user = undefined;
-    return this.httpClient.get("/api/auth/logout");
+    return this.httpClient.get("/api/auth/admin-logout");
   }
 }
