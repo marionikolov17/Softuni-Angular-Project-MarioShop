@@ -1,8 +1,9 @@
 import { Product } from "./product";
+import { User } from "./user";
 
 export interface Order {
   _id: string;
-  userId: string;
+  userId: User;
   products: ProductsArr[];
   name: string;
   phone: string;
