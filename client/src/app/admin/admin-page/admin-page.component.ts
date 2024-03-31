@@ -172,4 +172,9 @@ export class AdminPageComponent implements OnInit {
       this.fetchOrders();
     });
   }
+
+  // Auth
+  logout() {
+    console.log("logout from admin!");
+  }
 }
