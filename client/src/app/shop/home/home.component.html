@@ -56,8 +56,8 @@
           />
         </div> -->
         <mat-slider min="0" max="10000">
-          <input matSliderStartThumb (change)="changeMinPrice($event)"/>
-          <input matSliderEndThumb (change)="changeMaxPrice($event)"/>
+          <input matSliderStartThumb (change)="changeMinPrice($event)" [value]="minPrice"/>
+          <input matSliderEndThumb (change)="changeMaxPrice($event)" [value]="maxPrice"/>
         </mat-slider>
         <div class="range-price d-block">
           <label for="min">Min</label>

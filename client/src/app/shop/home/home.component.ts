@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.queryParamMap.subscribe((params: any) => {
       this.loadProducts(this.activeRoute.snapshot.queryParams);
+      // Change input parameters
+      this.minPrice = +this.activeRoute.snapshot.queryParams['minPrice'] || 0;
+      this.maxPrice = +this.activeRoute.snapshot.queryParams['maxPrice'] || 10000;
     });
   }
 
