@@ -111,7 +111,12 @@
             >
               Edit
             </button>
-            <button class="btn btn-danger ms-2" (click)="deleteProduct(product._id)">Delete</button>
+            <button
+              class="btn btn-danger ms-2"
+              (click)="deleteProduct(product._id)"
+            >
+              Delete
+            </button>
             <div class="form-check form-switch mx-2">
               <input
                 class="form-check-input"
@@ -137,44 +142,55 @@
       <!-- List of all orders -->
       <div class="orders d-block m-5">
         <!-- Order item -->
-        <div class="order border d-block mb-4" *ngFor="let order of orders">
-          <!-- Order product line -->
-          <div class="product-order-item d-flex" *ngFor="let product of order.products">
-            <div class="order-image-container border-end">
-              <img src={{product.productId.imageSrc}} alt="" class="h-100" />
-            </div>
+        <ng-container  *ngFor="let order of orders">
+          <div class="order border d-block mb-4" *ngIf="!order.isDone">
+            <!-- Order product line -->
             <div
-              class="text-container d-flex align-items-center justify-content-center border-end col-4"
+              class="product-order-item d-flex"
+              *ngFor="let product of order.products"
             >
-              <h4 class="my-auto fs-5">{{product.productId.title}}</h4>
+              <div class="order-image-container border-end">
+                <img
+                  src="{{ product.productId.imageSrc }}"
+                  alt=""
+                  class="h-100"
+                />
+              </div>
+              <div
+                class="text-container d-flex align-items-center justify-content-center border-end col-4"
+              >
+                <h4 class="my-auto fs-5">{{ product.productId.title }}</h4>
+              </div>
+              <div
+                class="quantity-container d-flex align-items-center justify-content-center border-end col-4"
+              >
+                <p class="my-auto fs-5">Quantity x {{ product.quantity }}</p>
+              </div>
+              <div
+                class="price-container d-flex justify-content-center align-items-center col-3"
+              >
+                <p class="my-auto fs-5">
+                  Price: {{ product.quantity * product.productId.price }}$
+                </p>
+              </div>
             </div>
+            <!-- Order customer details -->
             <div
-              class="quantity-container d-flex align-items-center justify-content-center border-end col-4"
+              class="customer-details border-top d-flex justify-content-center align-items-center"
             >
-              <p class="my-auto fs-5">Quantity x {{product.quantity}}</p>
+              <p class="m-3">
+                <span class="fw-bold">Email:</span> {{ order.userId.email }},
+                <span class="fw-bold">Name:</span> {{ order.name }},
+                <span class="fw-bold">Address:</span> {{ order.address }}.
+                <span class="fw-bold">Phone:</span> {{ order.phone }}
+              </p>
             </div>
-            <div
-              class="price-container d-flex justify-content-center align-items-center col-3"
-            >
-              <p class="my-auto fs-5">Price: {{product.quantity * product.productId.price}}$</p>
+            <!-- Finish order -->
+            <div class="finish-order border-top d-flex justify-content-center">
+              <button class="btn btn-outline-success my-3">Done</button>
             </div>
           </div>
-          <!-- Order customer details -->
-          <div
-            class="customer-details border-top d-flex justify-content-center align-items-center"
-          >
-            <p class="m-3">
-              <span class="fw-bold">Email:</span> {{order.userId.email}},
-              <span class="fw-bold">Name:</span> {{order.name}},
-              <span class="fw-bold">Address:</span> {{order.address}}.
-              <span class="fw-bold">Phone:</span> {{order.phone}}
-            </p>
-          </div>
-          <!-- Finish order -->
-          <div class="finish-order border-top d-flex justify-content-center">
-            <button class="btn btn-outline-success my-3">Done</button>
-          </div>
-        </div>
+        </ng-container>
       </div>
     </section>
 
