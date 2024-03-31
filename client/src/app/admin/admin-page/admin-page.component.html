@@ -66,7 +66,7 @@
       <h3 class="m-5 display-6 fw-bold">Total products - {{products?.length || 0}}</h3>
 
       <!-- Dropshipping bot form for laptop.bg and desktop.bg -->
-      <form class="mx-5">
+      <!-- <form class="mx-5">
         <div class="input-group">
           <input
             type="text"
@@ -79,11 +79,12 @@
             class="btn btn-outline-primary"
             type="button"
             id="button-addon2"
+            (click)="createDesktopProduct()"
           >
             Add Product
           </button>
         </div>
-      </form>
+      </form> -->
 
       <!-- List of all products -->
       <div class="products-list m-5">

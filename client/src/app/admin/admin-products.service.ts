@@ -12,6 +12,10 @@ export class AdminProductsService {
     return this.httpClient.get("/api/products");
   }
 
+  getDesktopProduct() {
+    return this.httpClient.get("https://desktop.bg/grigs-grigs_absolute-grigs_challenger_white_amd");
+  }
+
   createProduct(data: any) {
     return this.httpClient.post("/api/products", data);
   }

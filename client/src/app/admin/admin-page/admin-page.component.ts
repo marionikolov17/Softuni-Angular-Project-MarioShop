@@ -146,6 +146,12 @@ export class AdminPageComponent implements OnInit {
     })
   }
 
+  createDesktopProduct() {
+    this.adminProductsService.getDesktopProduct().subscribe((response:any) => {
+      console.log(response)
+    })
+  }
+
   // Orders logic
   fetchOrders() {
     this.adminOrdersService.getOrders().subscribe((response: any) => {
