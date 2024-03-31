@@ -19,7 +19,7 @@ router.param("id", async (req, res, next) => {
 });
 
 /* Get all orders */
-router.get("/", async (req, res) => {
+router.get("/", isAuth, isAdmin, async (req, res) => {
   try {
     const orders = await ordersService.getOrders();
 
@@ -53,7 +53,7 @@ router.post("/", isAuth, async (req, res) => {
 });
 
 /* Get an order */
-router.get("/:id", async (req, res) => {
+router.get("/:id", isAuth, isAdmin, async (req, res) => {
   try {
     const order = await ordersService.getOrder(req.params.id);
 
