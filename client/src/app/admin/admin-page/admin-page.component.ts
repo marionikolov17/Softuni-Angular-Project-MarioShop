@@ -37,6 +37,7 @@ export class AdminPageComponent implements OnInit {
     this.isOrdersPageShown = false;
     this.isCreatePageShown = false;
     this.isEditPageShown = false;
+    this.fetchProducts();
   }
 
   showOrdersPage() {
@@ -44,6 +45,7 @@ export class AdminPageComponent implements OnInit {
     this.isOrdersPageShown = true;
     this.isCreatePageShown = false;
     this.isEditPageShown = false;
+    this.fetchOrders();
   }
 
   showCreatePage() {
@@ -90,7 +92,6 @@ export class AdminPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProducts();
-    this.fetchOrders();
   }
 
   // Products logic
