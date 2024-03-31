@@ -6,17 +6,17 @@ class="login-section w-100 d-flex justify-content-center align-items-center over
 <form class="login-form shadow d-block" (ngSubmit)="login()" [formGroup]="adminLoginForm">
   <h3 class="text-center my-3 fw-bold">Admin Login</h3>
   <div class="px-4 my-2">
-    <label for="username">Username</label>
+    <label for="email">Email</label>
     <input
       type="text"
       class="form-control"
-      name="username"
-      id="username"
-      placeholder="Username"
-      formControlName="username"
+      name="email"
+      id="email"
+      placeholder="email"
+      formControlName="email"
     />
-    <ng-container *ngIf="adminLoginForm.get('username')?.touched">
-      <p class="invalid-input-message text-danger" *ngIf="adminLoginForm.get('username')?.errors?.['required']">Username is required!</p>
+    <ng-container *ngIf="adminLoginForm.get('email')?.touched">
+      <p class="invalid-input-message text-danger" *ngIf="adminLoginForm.get('email')?.errors?.['required']">Email is required!</p>
     </ng-container>
   </div>
   <div class="px-4 my-2">
@@ -32,6 +32,7 @@ class="login-section w-100 d-flex justify-content-center align-items-center over
     <ng-container *ngIf="adminLoginForm.get('password')?.touched">
       <p class="invalid-input-message text-danger" *ngIf="adminLoginForm.get('password')?.errors?.['required']">Password is required!</p>
     </ng-container>
+    <p class="invalid-input-message text-danger" *ngIf="isLoginError">Email or password are invalid!</p>
   </div>
   <div class="d-flex justify-content-center mt-4">
     <button class="btn btn-primary" type="submit">Login</button>
