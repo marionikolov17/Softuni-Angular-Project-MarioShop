@@ -86,6 +86,7 @@ export class AdminPageComponent implements OnInit {
     this.fetchProducts();
   }
 
+  // Products logic
   fetchProducts() {
     this.adminProductsService.getProducts().subscribe((response: any) => {
       this.products = response.data.products;
@@ -140,5 +141,10 @@ export class AdminPageComponent implements OnInit {
     this.adminProductsService.updateProduct({...product, isActive: event.target.checked }, product._id).subscribe(() => {
       this.fetchProducts();
     })
+  }
+
+  // Orders logic
+  fetchOrders() {
+    
   }
 }
