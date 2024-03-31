@@ -1,16 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
+import { tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminAuthService {
-  user: User | undefined
+  user: User | undefined;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   get isAdminLoggedIn() {
     return !!this.user && this.user?.isAdmin;
+  }
+
+  login(email: string, password: string) {
+    return this.httpClient
+      .post('/api/auth/login', { email, password })
+      .pipe(tap((response: any) => {
+        this.user = response.data.user;
+      }));
   }
 }
