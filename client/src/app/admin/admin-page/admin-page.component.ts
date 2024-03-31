@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AdminProductsService } from '../admin-products.service';
 import { Product } from 'src/app/types/product';
+import { AdminOrdersService } from '../admin-orders.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -77,7 +78,8 @@ export class AdminPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private adminProductsService: AdminProductsService
+    private adminProductsService: AdminProductsService,
+    private adminOrdersService: AdminOrdersService
   ) {}
 
   ngOnInit(): void {
