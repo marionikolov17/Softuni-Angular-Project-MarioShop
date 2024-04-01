@@ -7,6 +7,26 @@ const { isAuth } = require("./../middlewares/authMiddleware");
 
 const { getErrorMessage } = require("./../utils/errorUtil");
 
+router.get("/user", isAuth, async (req, res) => {
+  try {
+    const user = await authService.getUser(req.user._id);
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        user
+      }
+    })
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      data: {
+        message: "An error happened on the server!"
+      }
+    })
+  }
+})
+
 router.post("/register", async (req, res) => {
   try {
     //console.log(req.body)
