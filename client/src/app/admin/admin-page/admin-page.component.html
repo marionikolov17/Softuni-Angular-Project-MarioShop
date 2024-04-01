@@ -142,6 +142,7 @@
 
       <!-- List of all orders -->
       <div class="orders d-block m-5">
+        <p *ngIf="totalOrders === 0">There aren't any orders yet.</p>
         <!-- Order item -->
         <ng-container  *ngFor="let order of orders">
           <div class="order border d-block mb-4" *ngIf="!order.isDone">
