@@ -15,13 +15,15 @@ export class UserService implements OnDestroy {
 
   userSubscription: Subscription;
 
-  get isLoggedIn(): boolean {
+  /* get isLoggedIn(): boolean {
     return !!this.user;
-  }
+  } */
+  public isLoggedIn: boolean = false;
 
   constructor(private httpClient: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
+      this.isLoggedIn = true;
     });
 
     this.getCurrentUser();
@@ -69,6 +71,7 @@ export class UserService implements OnDestroy {
 
   logout() {
     this.user = undefined;
+    this.isLoggedIn = false;
     return this.httpClient.get('/api/auth/logout').subscribe();
   }
 

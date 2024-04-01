@@ -16,9 +16,9 @@ const routes: Routes = [
     { path: ":id", component: ProductComponent }
   ] },
   { path: "auth", component: ShopComponent, children: [
-    { path: "register", component: RegisterComponent },
-    { path: "login", component: LoginComponent }
-  ], canActivate: [GuestActivate] }
+    { path: "register", component: RegisterComponent, canActivate: [GuestActivate] },
+    { path: "login", component: LoginComponent, canActivate: [GuestActivate] }
+  ] }
 ];
 
 @NgModule({
