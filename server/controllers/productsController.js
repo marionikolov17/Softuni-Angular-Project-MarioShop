@@ -66,7 +66,7 @@ router.get("/", async (req, res) => {
 });
 
 /* Create product - Admin */
-router.post("/", isAuth, isAdmin, async (req, res) => {
+router.post("/", isAdmin, async (req, res) => {
   try {
     await productsService.createProduct(req.body);
 
@@ -94,7 +94,7 @@ router.get("/:id", async (req, res) => {
 });
 
 /* Update product - Admin */
-router.put("/:id", isAuth, isAdmin, async (req, res) => {
+router.put("/:id", isAdmin, async (req, res) => {
   try {
     await productsService.updateProduct(req.params.id, req.body);
 

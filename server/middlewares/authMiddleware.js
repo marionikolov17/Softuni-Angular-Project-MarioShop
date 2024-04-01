@@ -4,31 +4,40 @@ const { checkIfAdmin } = require("../services/authService");
 
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies["auth"];
-  const adminToken = req.cookies["admin-auth"];
 
   if (!token) {
     return next();
   }
-
-  /* if (!adminToken) {
-    return next();
-  } */
 
   try {
     const decoded = await jwt.verify(token, SECRET);
 
     req.user = decoded;
 
-    if(adminToken) {
-      const adminDecoded = await jwt.verify(adminToken, SECRET);
-      req.adminUser = adminDecoded;
-    }
-
     next();
   } catch (err) {
     next();
   }
 };
+
+const adminMiddleware = async (req, res, next) => {
+  const adminToken = req.cookies["admin-auth"];
+
+  if (!adminToken) {
+    //console.log("yes")
+    return next();
+  }
+
+  try {
+    const decoded = await jwt.verify(adminToken, SECRET);
+
+    req.adminUser = decoded;
+
+    next();
+  } catch (err) {
+    next();
+  }
+}
 
 const isAuth = (req, res, next) => {
   if (!req.user) {
@@ -41,7 +50,7 @@ const isAuth = (req, res, next) => {
 };
 
 const isAdmin = async (req, res, next) => {
-  if(!await checkIfAdmin(req.user._id) && !req.adminUser) {
+  if(!req.adminUser) {
     return res
       .status(401)
       .json({ status: "fail", data: { message: "You are unauthorized for this action!" } });
@@ -52,6 +61,7 @@ const isAdmin = async (req, res, next) => {
 
 module.exports = {
   authMiddleware,
+  adminMiddleware,
   isAuth,
   isAdmin,
 };

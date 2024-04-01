@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const expressConfig = require("./config/expressConfig");
 
 // Auth middleware import
-const { authMiddleware } = require("./middlewares/authMiddleware");
+const { authMiddleware, adminMiddleware } = require("./middlewares/authMiddleware");
 
 // Router import
 const router = require("./routes");
@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
 expressConfig(app);
 
 // Auth middleware
-app.use(authMiddleware);
+app.use(authMiddleware, adminMiddleware);
 
 // App router middleware
 app.use(router);
