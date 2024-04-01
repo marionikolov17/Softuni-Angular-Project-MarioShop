@@ -88,6 +88,7 @@
 
       <!-- List of all products -->
       <div class="products-list m-5">
+        <p *ngIf="products?.length === 0">There aren't any products yet.</p>
         <!-- Product item -->
         <div
           class="product-item d-flex border mb-4"
