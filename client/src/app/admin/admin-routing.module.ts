@@ -6,7 +6,7 @@ import { AdminAuthActivate } from '../guards/admin-auth.activate';
 
 const routes: Routes = [
   { path: "admin", children: [
-    { path: "", pathMatch: "full", component: AdminPageComponent, canActivate: [AdminAuthActivate] },
+    { path: "", pathMatch: "full", component: AdminPageComponent, },
     { path: "login", component: AdminLoginComponent }
   ] }
 ];
