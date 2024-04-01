@@ -14,6 +14,8 @@ const generateToken = async (createdUser) => {
   return token;
 };
 
+const getUser = async (id) => userModel.findById(id, { password: 0 });
+
 const registerUser = async (data) => {
   const user = await userModel.findOne({ email: data.email });
 
