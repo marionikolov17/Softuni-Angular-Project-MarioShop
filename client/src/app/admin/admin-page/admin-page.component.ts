@@ -31,6 +31,9 @@ export class AdminPageComponent implements OnInit {
   isCreatePageShown: boolean = false;
   isEditPageShown: boolean = false;
 
+  /* Loading booleans */
+  isProductsLoading: boolean = true;
+
   /* Pages toggles functions */
   showProductsPage() {
     this.isProductsPageShown = true;
@@ -100,7 +103,9 @@ export class AdminPageComponent implements OnInit {
 
   // Products logic
   fetchProducts() {
+    this.isProductsLoading = true;
     this.adminProductsService.getProducts({}).subscribe((response: any) => {
+      this.isProductsLoading = false;
       this.products = response.data.products;
     });
   }
@@ -160,8 +165,10 @@ export class AdminPageComponent implements OnInit {
     if (this.searchForm.invalid) {
       return
     }
-    
+
+    this.isProductsLoading = true;
     this.adminProductsService.getProducts({search: this.searchForm.value.search}).subscribe((response: any) => {
+      this.isProductsLoading = false;
       this.products = response.data.products;
     });
   }
