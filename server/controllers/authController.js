@@ -3,14 +3,35 @@ const router = require("express").Router();
 const authService = require("./../services/authService");
 const cartService = require("./../services/cartService");
 
-const { isAuth } = require("./../middlewares/authMiddleware");
+const { isAuth, isAdmin } = require("./../middlewares/authMiddleware");
 
 const { getErrorMessage } = require("./../utils/errorUtil");
 
-router.get("/user", async (req, res) => {
+router.get("/user", isAuth, async (req, res) => {
   //console.log(req.cookies)
   try {
     const user = await authService.getUser(req.user._id);
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        user
+      }
+    })
+  } catch (err) {
+    res.status(500).json({
+      status: "error",
+      data: {
+        message: "An error happened on the server!"
+      }
+    })
+  }
+})
+
+router.get("/admin", isAuth, isAdmin, async (req, res) => {
+  //console.log(req.cookies)
+  try {
+    const user = await authService.getUser(req.adminUser._id);
 
     res.status(200).json({
       status: "success",
