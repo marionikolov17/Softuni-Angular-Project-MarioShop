@@ -32,7 +32,7 @@ router.get("/admin", isAdmin, async (req, res) => {
   //console.log(req.cookies)
   try {
     const user = await authService.getUser(req.adminUser._id);
-    console.log(user)
+    //console.log(user)
 
     res.status(200).json({
       status: "success",
