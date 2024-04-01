@@ -6,11 +6,12 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { UserService } from '../shop/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class GuestActivate implements CanActivate {
+
   constructor(private userService: UserService, private router: Router) {}
 
   canActivate(
@@ -21,10 +22,7 @@ export class GuestActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (this.userService.isLoggedIn) {
-      this.router.navigate(['/shop']);
-      return false;
-    }
-    return true;
+
+      return true
   }
 }

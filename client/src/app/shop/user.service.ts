@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, catchError, tap } from 'rxjs';
 import { User } from '../types/user';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,6 @@ export class UserService implements OnDestroy {
   constructor(private httpClient: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
-      //this.isLoggedIn = true;
     });
 
     this.getCurrentUser();
