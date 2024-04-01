@@ -25,6 +25,6 @@ export class AdminAuthService {
 
   logout() {
     this.user = undefined;
-    return this.httpClient.get("/api/auth/admin-logout");
+    return this.httpClient.get("/api/auth/admin-logout").subscribe();
   }
 }
