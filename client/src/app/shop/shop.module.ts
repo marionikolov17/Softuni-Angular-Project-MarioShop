@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatSliderModule } from '@angular/material/slider';
     CoreModule,
     AuthModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+    SharedModule
   ],
   exports: [
     ShopComponent
