@@ -8,6 +8,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -24,7 +25,8 @@ import { RouterModule } from '@angular/router';
     FontAwesomeModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class AdminModule { }
