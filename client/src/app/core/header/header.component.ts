@@ -8,32 +8,40 @@ import { UserService } from 'src/app/shop/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   faCartShopping = faCartShopping;
   totalProductsInCart: number = 0;
 
   searchForm = this.fb.group({
-    search: ['', [Validators.required]]
-  })
+    search: ['', [Validators.required]],
+  });
 
-  constructor(private userService: UserService, private router: Router, private shopService: ShopService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private shopService: ShopService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-      if (this.isLoggedIn) {
-        this.getCartLength();
+    this.getCartLength();
 
-        this.router.events.subscribe(() => {
-          this.getCartLength();
-        })
-      }
+    this.router.events.subscribe(() => {
+      this.getCartLength();
+    });
   }
 
   getCartLength() {
-    this.shopService.getCart().subscribe((response: any) => {
-      this.totalProductsInCart = response.data.cart.products.length;
-    })
+    this.shopService.getCart().subscribe({
+      next: (response: any) => {
+        this.totalProductsInCart = response.data.cart.products.length;
+      },
+      error: () => {
+        return
+      }
+    });
   }
 
   get isLoggedIn(): boolean {
@@ -41,7 +49,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get username(): string {
-    return this.userService.user?.username || "";
+    return this.userService.user?.username || '';
   }
 
   logout(): void {
@@ -54,6 +62,8 @@ export class HeaderComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/shop'], { queryParams: { search: this.searchForm.value.search } });
+    this.router.navigate(['/shop'], {
+      queryParams: { search: this.searchForm.value.search },
+    });
   }
 }

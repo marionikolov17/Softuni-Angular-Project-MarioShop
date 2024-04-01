@@ -30,7 +30,7 @@ export class UserService implements OnDestroy {
   getCurrentUser() {
     this.httpClient.get('/api/auth/user').subscribe({
       next: (response: any) => {
-        this.user$$.next(response.data.user);
+        this.user = response.data.user;
       },
       error: () => {
         return;
