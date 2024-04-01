@@ -25,6 +25,6 @@ export class GuestActivate implements CanActivate {
       this.router.navigate(['/shop']);
       return false;
     }
-    return !this.userService.isLoggedIn;
+    return true;
   }
 }

@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthActivate } from '../guards/auth.activate';
+import { GuestActivate } from '../guards/guest.activate';
 
 const routes: Routes = [
   { path: "shop", component: ShopComponent, children: [
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: "auth", component: ShopComponent, children: [
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent }
-  ] }
+  ], canActivate: [GuestActivate] }
 ];
 
 @NgModule({
