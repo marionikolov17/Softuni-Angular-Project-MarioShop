@@ -125,7 +125,7 @@
     <app-loader *ngIf="isLoading" class="position-absolute top-50 start-50"/>
 
     <ng-container *ngFor="let product of products">
-      <div class="card product-card overflow-hidden" *ngIf="product.isActive">
+      <div class="card product-card overflow-hidden" *ngIf="product.isActive && !isLoading">
         <div
           class="card-image w-100 d-flex justify-content-center align-items-center overflow-hidden"
         >
