@@ -19,14 +19,14 @@ export class AdminAuthService implements OnDestroy {
       this.user = user;
     });
 
-    this.getCurrentUser();
+    this.getCurrentAdmin();
   }
 
   get isAdminLoggedIn() {
     return !!this.user && this.user?.isAdmin;
   }
 
-  getCurrentUser() {
+  getCurrentAdmin() {
     this.httpClient.get('/api/auth/admin').subscribe({
       next: (response: any) => {
         this.user$$.next(response.data.user);
