@@ -11,7 +11,10 @@ import { AdminAuthService } from '../admin/admin-auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AdminAuthActivate implements CanActivate {
-  constructor(private adminAuthService: AdminAuthService, private router: Router) {}
+  constructor(
+    private adminAuthService: AdminAuthService,
+    private router: Router
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,8 +24,9 @@ export class AdminAuthActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
+    console.log("guard", this.adminAuthService.isAdminLoggedIn)
     if (!this.adminAuthService.isAdminLoggedIn) {
-      this.router.navigate(['/shop']);
+      this.router.navigate(['/admin/login']);
       return false;
     }
     return this.adminAuthService.isAdminLoggedIn;

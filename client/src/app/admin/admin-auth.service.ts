@@ -14,6 +14,8 @@ export class AdminAuthService implements OnDestroy {
 
   userSubscription: Subscription;
 
+  public isAdminLoggedIn: boolean = false;
+
   constructor(private httpClient: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
@@ -22,14 +24,16 @@ export class AdminAuthService implements OnDestroy {
     this.getCurrentAdmin();
   }
 
-  get isAdminLoggedIn() {
+  /* get isAdminLoggedIn() {
     return !!this.user && this.user?.isAdmin;
-  }
+  } */
 
   getCurrentAdmin() {
     this.httpClient.get('/api/auth/admin').subscribe({
       next: (response: any) => {
         this.user$$.next(response.data.user);
+        this.isAdminLoggedIn = true;
+        console.log("get", this.isAdminLoggedIn)
       },
       error: () => {
         return;
@@ -42,12 +46,14 @@ export class AdminAuthService implements OnDestroy {
       .post('/api/auth/admin-login', { email, password })
       .pipe(tap((response: any) => {
         this.user$$.next(response.data.user);
+        this.isAdminLoggedIn = true;
       }));
   }
 
   logout() {
     this.user = undefined;
-    return this.httpClient.get("/api/auth/admin-logout").subscribe();
+    this.isAdminLoggedIn = false;
+    return this.httpClient.get("/api/auth/admin-logout").subscribe((response) => console.log(response));
   }
 
   ngOnDestroy(): void {

@@ -143,7 +143,7 @@ router.get("/logout", isAuth, (req, res) => {
   })
 });
 
-router.get("/admin-logout", isAuth, (req, res) => {
+router.get("/admin-logout", isAdmin, (req, res) => {
   res.clearCookie("admin-auth");
   res.status(200).json({
     status: "success",

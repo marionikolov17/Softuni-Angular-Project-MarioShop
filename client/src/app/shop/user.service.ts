@@ -23,7 +23,7 @@ export class UserService implements OnDestroy {
   constructor(private httpClient: HttpClient) {
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
-      this.isLoggedIn = true;
+      //this.isLoggedIn = true;
     });
 
     this.getCurrentUser();
@@ -33,6 +33,7 @@ export class UserService implements OnDestroy {
     this.httpClient.get('/api/auth/user').subscribe({
       next: (response: any) => {
         this.user$$.next(response.data.user);
+        this.isLoggedIn = true;
       },
       error: () => {
         return;
@@ -56,6 +57,7 @@ export class UserService implements OnDestroy {
       .pipe(
         tap((response: any) => {
           this.user$$.next(response.data.createdUser);
+          this.isLoggedIn = true;
         })
       );
   }
@@ -65,6 +67,7 @@ export class UserService implements OnDestroy {
       tap((response: any) => {
         console.log(response);
         this.user$$.next(response.data.user);
+        this.isLoggedIn = true;
       })
     );
   }
