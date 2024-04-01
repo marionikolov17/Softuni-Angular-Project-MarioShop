@@ -9,10 +9,24 @@ import { tap } from 'rxjs';
 export class AdminAuthService {
   user: User | undefined;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.getCurrentUser();
+  }
 
   get isAdminLoggedIn() {
     return !!this.user && this.user?.isAdmin;
+  }
+
+  getCurrentUser() {
+    this.httpClient.get('/api/auth/admin').subscribe({
+      next: (response: any) => {
+        console.log('admin', response)
+        this.user = response.data.user;
+      },
+      error: () => {
+        return;
+      }
+    });
   }
 
   login(email: string, password: string) {
