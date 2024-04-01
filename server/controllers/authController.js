@@ -80,6 +80,15 @@ router.post("/login", async (req, res) => {
   try {
     const {user, token} = await authService.loginUser(req.body);
 
+    if (user.isAdmin) {
+      return res.status(401).json({
+        status: "fail",
+        data: {
+          errorMessage: "Email or password are incorrect!"
+        }
+      })
+    }
+
     res.cookie("auth", token);
     res.status(200).json({
         status: "success",
