@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   minPrice: number = 0;
   maxPrice: number = 10000;
 
+  isLoading: boolean = true;
+
   constructor(
     private shopService: ShopService,
     private activeRoute: ActivatedRoute,
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit {
     this.shopService.getProducts(queryParams).subscribe((response: any) => {
       //console.log(response.data);
       this.products = response.data.products;
+      this.isLoading = false;
     });
   }
 

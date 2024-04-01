@@ -122,6 +122,7 @@
     <!-- <h2 class="mb-5 mt-3">Category: All</h2> -->
 
     <!-- Product Card -->
+    <app-loader *ngIf="isLoading" class="position-absolute top-50 start-50"/>
 
     <ng-container *ngFor="let product of products">
       <div class="card product-card overflow-hidden" *ngIf="product.isActive">
@@ -148,6 +149,6 @@
         </div>
       </div>
     </ng-container>
-    <h2 *ngIf="!products?.length">There are no products.</h2>
+    <h2 *ngIf="!products?.length && !isLoading">There are no products.</h2>
   </section>
 </main>
