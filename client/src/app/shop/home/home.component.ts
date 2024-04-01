@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   loadProducts(queryParams: any) {
     this.shopService.getProducts(queryParams).subscribe((response: any) => {
-      console.log(response.data);
+      //console.log(response.data);
       this.products = response.data.products;
     });
   }
