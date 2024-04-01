@@ -10,16 +10,19 @@ const authMiddleware = async (req, res, next) => {
     return next();
   }
 
-  if (!adminToken) {
+  /* if (!adminToken) {
     return next();
-  }
+  } */
 
   try {
     const decoded = await jwt.verify(token, SECRET);
-    const adminDecoded = await jwt.verify(adminToken, SECRET);
 
     req.user = decoded;
-    req.adminUser = adminDecoded;
+
+    if(adminToken) {
+      const adminDecoded = await jwt.verify(adminToken, SECRET);
+      req.adminUser = adminDecoded;
+    }
 
     next();
   } catch (err) {

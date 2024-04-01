@@ -7,7 +7,8 @@ const { isAuth } = require("./../middlewares/authMiddleware");
 
 const { getErrorMessage } = require("./../utils/errorUtil");
 
-router.get("/user", isAuth, async (req, res) => {
+router.get("/user", async (req, res) => {
+  //console.log(req.cookies)
   try {
     const user = await authService.getUser(req.user._id);
 
@@ -103,10 +104,22 @@ router.post("/admin-login", async (req, res) => {
 
 router.get("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
+  res.status(200).json({
+    status: "success",
+    data: {
+      message: "User successfully logout!"
+    }
+  })
 });
 
 router.get("/admin-logout", isAuth, (req, res) => {
   res.clearCookie("admin-auth");
+  res.status(200).json({
+    status: "success",
+    data: {
+      message: "Admin successfully logout!"
+    }
+  })
 });
 
 module.exports = router;
