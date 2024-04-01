@@ -66,7 +66,7 @@
       <h3 class="m-5 display-6 fw-bold">Total products - {{products?.length || 0}}</h3>
 
       <!-- Search form -->
-      <form class="mx-5">
+      <form class="mx-5" [formGroup]="searchForm" (ngSubmit)="onSearch()">
         <div class="input-group">
           <input
             type="text"
@@ -74,10 +74,12 @@
             placeholder="Type product..."
             aria-label=""
             aria-describedby="button-addon2"
+            name="search"
+            formControlName="search"
           />
           <button
             class="btn btn-outline-primary"
-            type="button"
+            type="submit"
             id="button-addon2"
           >
             Search

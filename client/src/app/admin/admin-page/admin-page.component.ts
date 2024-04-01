@@ -82,6 +82,10 @@ export class AdminPageComponent implements OnInit {
     price: ['', [Validators.required]],
   });
 
+  searchForm = this.fb.group({
+    search: ['']
+  })
+
   constructor(
     private fb: FormBuilder,
     private adminProductsService: AdminProductsService,
@@ -96,7 +100,7 @@ export class AdminPageComponent implements OnInit {
 
   // Products logic
   fetchProducts() {
-    this.adminProductsService.getProducts().subscribe((response: any) => {
+    this.adminProductsService.getProducts({}).subscribe((response: any) => {
       this.products = response.data.products;
     });
   }
@@ -150,6 +154,16 @@ export class AdminPageComponent implements OnInit {
     this.adminProductsService.updateProduct({...product, isActive: event.target.checked }, product._id).subscribe(() => {
       this.fetchProducts();
     })
+  }
+
+  onSearch() {
+    if (this.searchForm.invalid) {
+      return
+    }
+    
+    this.adminProductsService.getProducts({search: this.searchForm.value.search}).subscribe((response: any) => {
+      this.products = response.data.products;
+    });
   }
 
   createDesktopProduct() {
