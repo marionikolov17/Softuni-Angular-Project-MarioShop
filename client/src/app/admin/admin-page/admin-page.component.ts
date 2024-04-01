@@ -122,6 +122,7 @@ export class AdminPageComponent implements OnInit {
       .subscribe(() => {
         this.fetchProducts();
         this.showProductsPage();
+        this.createForm.reset();
       });
   }
 
