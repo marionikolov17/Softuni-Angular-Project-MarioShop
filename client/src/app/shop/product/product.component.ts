@@ -12,6 +12,8 @@ import { UserService } from '../user.service';
 export class ProductComponent implements OnInit {
   product: Product | undefined;
 
+  isLoading: boolean = true;
+
   constructor(
     private activeRoute: ActivatedRoute,
     private shopService: ShopService,
@@ -22,7 +24,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe((data: any) => {
       this.shopService.getProduct(data.id).subscribe((response: any) => {
-        console.log(response);
+        //console.log(response);
+        this.isLoading = false;
         this.product = response.data.product;
       });
     });
