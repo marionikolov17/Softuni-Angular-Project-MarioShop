@@ -143,8 +143,9 @@
     <section class="admin-orders-page w-100 d-block" *ngIf="isOrdersPageShown">
       <h3 class="m-5 display-6 fw-bold">Total orders - {{totalOrders || 0}}</h3>
 
+      <app-loader *ngIf="isOrdersLoading" class="position-absolute top-50 start-50"/>
       <!-- List of all orders -->
-      <div class="orders d-block m-5">
+      <div class="orders d-block m-5" *ngIf="!isOrdersLoading">
         <p *ngIf="totalOrders === 0">There aren't any orders yet.</p>
         <!-- Order item -->
         <ng-container  *ngFor="let order of orders">

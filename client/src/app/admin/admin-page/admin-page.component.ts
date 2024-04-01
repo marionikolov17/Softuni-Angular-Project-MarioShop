@@ -33,6 +33,7 @@ export class AdminPageComponent implements OnInit {
 
   /* Loading booleans */
   isProductsLoading: boolean = true;
+  isOrdersLoading: boolean = true;
 
   /* Pages toggles functions */
   showProductsPage() {
@@ -181,8 +182,10 @@ export class AdminPageComponent implements OnInit {
 
   // Orders logic
   fetchOrders() {
+    this.isOrdersLoading = true;
     this.adminOrdersService.getOrders().subscribe((response: any) => {
       this.orders = response.data.orders;
+      this.isOrdersLoading = false;
     });
   }
 
