@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
       products = products.sort((a, b) => b.price-a.price);
     } else if (sortBy === "newAdded") {
       products = products.sort((a, b) => new Date(b.createdAt)-new Date(a.createdAt));
-    } else if (sortBy === "lastAdded") {
+    } else if (sortBy === "oldest") {
       products = products.sort((a, b) => new Date(a.createdAt)-new Date(b.createdAt));
     }
   }
