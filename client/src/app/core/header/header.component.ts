@@ -26,19 +26,18 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.userService.user) {
-      this.getCartLength();
+    //console.log(this.userService.user);
+    this.getCartLength();
 
-      this.router.events.subscribe(() => {
-        this.getCartLength();
-      });
-    }
+    this.router.events.subscribe(() => {
+      this.getCartLength();
+    });
   }
 
   getCartLength() {
     this.shopService.getCart().subscribe({
       next: (response: any) => {
-        console.log("cart", response)
+        //console.log('cart', response);
         this.totalProductsInCart = response.data.cart.products.length;
       },
       error: () => {
