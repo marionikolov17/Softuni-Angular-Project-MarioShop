@@ -11,7 +11,6 @@ import { UserService } from '../shop/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class GuestActivate implements CanActivate {
-
   constructor(private userService: UserService, private router: Router) {}
 
   canActivate(
@@ -22,12 +21,14 @@ export class GuestActivate implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-
-      if (localStorage.getItem("auth") !== undefined) {
-        this.router.navigate(["/shop"]);
-        return false;
+    return new Promise(async (resolve) => {
+      await this.userService.checkIsLoggedIn()
+      if (this.userService.user) {
+        this.router.navigate(['/shop']);
+        resolve(false);
+      } else {
+        resolve(true)
       }
-
-      return true;
+    })
   }
 }

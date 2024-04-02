@@ -40,6 +40,23 @@ export class UserService implements OnDestroy {
     });
   }
 
+  checkIsLoggedIn() {
+    return new Promise((resolve) => {
+      this.httpClient.get('/api/auth/user').subscribe({
+        next: (response: any) => {
+          if (response.status === "success") {
+            resolve(false);
+          } else {
+            resolve(true);
+          }
+        },
+        error: () => {
+          resolve(true);
+        }
+      })
+    })
+  }
+
   register(
     username: string,
     email: string,

@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
   getCartLength() {
     this.shopService.getCart().subscribe({
       next: (response: any) => {
+        console.log("cart", response)
         this.totalProductsInCart = response.data.cart.products.length;
       },
       error: () => {
