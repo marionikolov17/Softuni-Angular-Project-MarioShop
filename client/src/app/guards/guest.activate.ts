@@ -23,6 +23,11 @@ export class GuestActivate implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
 
-      return true
+      if (localStorage.getItem("auth") !== undefined) {
+        this.router.navigate(["/shop"]);
+        return false;
+      }
+
+      return true;
   }
 }
