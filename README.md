@@ -6,6 +6,10 @@ Administrator account:<br />
 email - mario@abv.bg<br />
 password - 1234
 
+Test user account:<br />
+email - ivan@abv.bg<br/>
+password - 1234
+
 <strong>NOTE: You can't use the shop functionalities with the administrator account and vice versa!</strong>
 
 ## Shop(user part) features
