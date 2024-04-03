@@ -12,3 +12,13 @@ password - 1234
 
 ### All users can:
     - Access the home page and view all available products
+    - Search, filter and sort to get to the product/s they want
+### Guest users can:
+    - Access the register and login page
+    - Create new user account
+    - Log in into exsisting account
+### Logged-in users can:
+    - Add different products to cart
+    - Access the cart page
+    - Manage the cart (add, remove, update, delete)
+    - Order
