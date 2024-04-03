@@ -38,4 +38,5 @@ Database: MongoDB
 
 ## Getting started
 
-1. **Clone the repository**
+1. **Clone the repository** <br/>
+2. **Install the required dependencies** <br/>
