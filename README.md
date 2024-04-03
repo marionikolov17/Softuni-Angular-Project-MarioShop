@@ -35,3 +35,7 @@ password - 1234
 Front-end: Angular v16 + Bootstrap v5 <br/>
 Back-end: Node.js + Express.js <br/>
 Database: MongoDB
+
+## Getting started
+
+1. **Clone the repository**
