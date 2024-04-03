@@ -56,8 +56,16 @@
           />
         </div> -->
         <mat-slider min="0" max="10000">
-          <input matSliderStartThumb (change)="changeMinPrice($event)" [value]="minPrice"/>
-          <input matSliderEndThumb (change)="changeMaxPrice($event)" [value]="maxPrice"/>
+          <input
+            matSliderStartThumb
+            (change)="changeMinPrice($event)"
+            [value]="minPrice"
+          />
+          <input
+            matSliderEndThumb
+            (change)="changeMaxPrice($event)"
+            [value]="maxPrice"
+          />
         </mat-slider>
         <div class="range-price d-block">
           <label for="min">Min</label>
@@ -122,10 +130,13 @@
     <!-- <h2 class="mb-5 mt-3">Category: All</h2> -->
 
     <!-- Product Card -->
-    <app-loader *ngIf="isLoading" class="position-absolute top-50 start-50"/>
+    <app-loader *ngIf="isLoading" class="position-absolute top-50 start-50" />
 
     <ng-container *ngFor="let product of products">
-      <div class="card product-card overflow-hidden" *ngIf="product.isActive && !isLoading">
+      <div
+        class="card product-card overflow-hidden"
+        *ngIf="product.isActive && !isLoading"
+      >
         <div
           class="card-image w-100 d-flex justify-content-center align-items-center overflow-hidden"
         >

@@ -1,4 +1,10 @@
 
 @media screen and (max-width: 1440px) {
-  
+  .filter-section {
+    width: 35% !important;
+  }
+  .products-section {
+    width: 55% !important;
+    grid-template-columns: 300px 300px;
+  }
 }
