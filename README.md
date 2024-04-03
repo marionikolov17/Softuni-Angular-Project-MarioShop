@@ -40,3 +40,4 @@ Database: MongoDB
 
 1. **Clone the repository** <br/>
 2. **Install the required dependencies** <br/>
+3. **Install 'MongoDBCompass' and create database 'marioshop'**
