@@ -50,3 +50,6 @@ Database: MongoDB
 3. **Install 'MongoDBCompass' and create database 'marioshop'**
 4. **Download the collections files from https://drive.google.com/drive/folders/1wXtOlxtW3XVoxCcUAteD_uWaCJVfozJh?usp=sharing**
 5. **Create 'users', 'carts', 'orders' and 'products' collections and follow this guideline to import the data: https://www.mongodb.com/docs/compass/current/import-export/**
+6. **Open terminal in 'server' folder and run 'npm start'**
+7. **Open terminal in 'client' folder and run 'npm start'**
+8. **Now you can access the application on http://localhost:4200/shop**
