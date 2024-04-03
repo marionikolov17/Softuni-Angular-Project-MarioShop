@@ -98,3 +98,27 @@
 .invalid-input-message {
   font-size: 15px;
 }
+
+@media screen and (max-width: 1700px) {
+  .image-container {
+    width: 20% !important;
+  }
+  .text-container {
+    width: 30% !important;
+  }
+  .buttons-container {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .admin-sidenav {
+    width: 20% !important;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .admin-content {
+    width: 80% !important;
+  }
+}
