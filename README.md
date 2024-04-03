@@ -11,19 +11,25 @@ password - 1234
 ## Shop(user part) features
 
 ### All users can:
+
     - Access the home page and view all available products
     - Search, filter and sort to get to the product/s they want
+
 ### Guest users can:
+
     - Access the register and login page
     - Create new user account
     - Log in into exsisting account
+
 ### Logged-in users can:
+
     - Add different products to cart
     - Access the cart page
     - Manage the cart (add, remove, update, delete)
     - Order
 
 ## Admin panel features (admin user only)
+
     - Create new products
     - Edit existing products
     - Activate/Deactivate products
@@ -32,6 +38,7 @@ password - 1234
     - Manage orders
 
 ## Tech stack
+
 Front-end: Angular v16 + Bootstrap v5 <br/>
 Back-end: Node.js + Express.js <br/>
 Database: MongoDB
@@ -42,3 +49,4 @@ Database: MongoDB
 2. **Install the required dependencies** <br/>
 3. **Install 'MongoDBCompass' and create database 'marioshop'**
 4. **Download the collections files from https://drive.google.com/drive/folders/1wXtOlxtW3XVoxCcUAteD_uWaCJVfozJh?usp=sharing**
+5. **Create 'users', 'carts', 'orders' and 'products' collections and follow this guideline to import the data: https://www.mongodb.com/docs/compass/current/import-export/**
