@@ -32,4 +32,4 @@ password - 1234
     - Manage orders
 
 ## Tech stack
-### <strong>M</strong>ongoDB
+<h2><strong>M</strong>ongoDB</h2>
