@@ -9,3 +9,4 @@ password - 1234
 <strong>NOTE: You can't use the shop functionalities with the administrator account and vice versa!</strong>
 
 <h3>Shop(user part) features</h3>
+<hr />
