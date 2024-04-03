@@ -32,4 +32,6 @@ password - 1234
     - Manage orders
 
 ## Tech stack
-<h3><strong>M</strong>ongoDB</h3>
+Front-end: Angular v16 + Bootstrap v5
+Back-end: Node.js + Express.js
+Database: MongoDB
