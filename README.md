@@ -5,3 +5,5 @@ This is an e-commerce web platform which includes shop for customers and adminis
 Administrator account:<br />
 email - mario@abv.bg<br />
 password - 1234
+
+<strong>NOTE: You can't use the shop functionalities with the administrator account and vice versa!</strong>
