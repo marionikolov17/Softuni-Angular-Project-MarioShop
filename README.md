@@ -22,3 +22,11 @@ password - 1234
     - Access the cart page
     - Manage the cart (add, remove, update, delete)
     - Order
+
+## Admin panel features (admin user only)
+    - Create new products
+    - Edit existing products
+    - Activate/Deactivate products
+    - Delete products
+    - Get orders from customers
+    - Manage orders
