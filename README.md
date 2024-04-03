@@ -30,3 +30,6 @@ password - 1234
     - Delete products
     - Get orders from customers
     - Manage orders
+
+### Tech stack
+<strong>M</strong>ongoDB
